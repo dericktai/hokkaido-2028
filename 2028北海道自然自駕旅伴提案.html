@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>2028 北海道自然自駕提案｜10/17–11/4</title>
+<style>
+:root{
+  --bg:#f4f2ec; --paper:#fffdf8; --ink:#17231c; --muted:#6e786f;
+  --line:#d9ddd7; --accent:#315f49; --accent2:#9c5b38; --soft:#e8eee9;
+  --warn:#8a4b35; --shadow:0 18px 55px rgba(29,45,35,.10);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
+button{font:inherit}
+.shell{max-width:1220px;margin:auto;min-height:100vh;background:var(--paper);box-shadow:var(--shadow)}
+.topbar{position:sticky;top:0;z-index:20;background:rgba(255,253,248,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.brand{display:flex;justify-content:space-between;gap:18px;align-items:center;padding:18px 28px 10px}
+.brand b{font-size:17px;letter-spacing:.08em}
+.brand span{color:var(--muted);font-size:13px}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding:0 28px 14px;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{white-space:nowrap;border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 14px;cursor:pointer;color:#465248}
+.tab.active{background:var(--accent);color:white;border-color:var(--accent)}
+.page{display:none;padding:44px 52px 60px;min-height:760px}
+.page.active{display:block}
+.hero{position:relative;min-height:590px;border-radius:28px;overflow:hidden;background:
+ linear-gradient(90deg,rgba(11,29,20,.84),rgba(11,29,20,.24)),
+ url('https://hokkaidolikers.com/uploads/2022/10/795cdb1e40c746849ac77b17a9719db2.jpg') center/cover}
+.hero-copy{position:absolute;left:46px;bottom:50px;width:min(650px,78%);color:white}
+.kicker{font-size:13px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;opacity:.82}
+h1{font-size:54px;line-height:1.04;margin:12px 0 18px;letter-spacing:-.03em}
+.hero p{font-size:20px;line-height:1.6;margin:0;color:rgba(255,255,255,.88)}
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}
+.chip{padding:8px 11px;border-radius:999px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.26);font-size:13px}
+h2{font-size:34px;margin:0 0 10px;letter-spacing:-.02em}
+.lead{font-size:17px;line-height:1.8;color:#455148;max-width:850px;margin:0 0 28px}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+.card{background:white;border:1px solid var(--line);border-radius:20px;padding:22px}
+.card.soft{background:var(--soft)}
+.span4{grid-column:span 4}.span5{grid-column:span 5}.span6{grid-column:span 6}.span7{grid-column:span 7}.span8{grid-column:span 8}.span12{grid-column:span 12}
+.metric{font-size:34px;font-weight:750;margin-bottom:4px}
+.small{font-size:13px;color:var(--muted);line-height:1.6}
+.route{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:28px 0}
+.route .stop{background:#fff;border:1px solid var(--line);border-radius:999px;padding:10px 13px;font-weight:650}
+.arrow{color:#9a9f9b}
+.photo{position:relative;min-height:310px;border-radius:22px;overflow:hidden;background:#ddd center/cover no-repeat}
+.photo:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.58))}
+.photo .cap{position:absolute;z-index:2;left:20px;bottom:18px;color:#fff}
+.photo .cap b{display:block;font-size:23px;margin-bottom:5px}
+.photo .cap span{font-size:13px;color:rgba(255,255,255,.82)}
+.photo.shikotsu{background-image:url('https://hokkaidolikers.com/uploads/2022/10/795cdb1e40c746849ac77b17a9719db2.jpg')}
+.photo.toya{background-image:url('https://www.kyuhoshi.com/wp-content/uploads/2023/06/lake_toya_mount_usu_ropeway_hokkaido_japan-800x600.jpg')}
+.photo.onneto{background-image:url('https://japatabix.com/wp-content/uploads/2020/05/asyoro12-1.jpg')}
+.photo.shiretoko{background-image:url('https://www.visit-hokkaido.jp/lsc/upfile/spot/0001/0404/10404_1_l.jpg')}
+.section-title{display:flex;justify-content:space-between;gap:16px;align-items:end;margin-bottom:22px}
+.score{display:grid;grid-template-columns:1fr auto;gap:8px 14px;margin-top:12px}
+.bar{height:7px;background:#e3e5e2;border-radius:9px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);border-radius:9px}
+.list{margin:14px 0 0;padding:0;list-style:none}
+.list li{padding:10px 0;border-bottom:1px dashed #d7dbd7;line-height:1.55}
+.list li:last-child{border-bottom:0}
+.badge{display:inline-block;background:#f0e3da;color:#7b422d;padding:5px 9px;border-radius:999px;font-size:12px;font-weight:700}
+.daytable{width:100%;border-collapse:collapse;margin-top:18px;font-size:14px}
+.daytable th,.daytable td{padding:12px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.daytable th{font-size:12px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+.daytable tr:hover td{background:#faf9f5}
+.note{border-left:4px solid var(--accent2);background:#f7eee8;padding:15px 18px;border-radius:0 12px 12px 0;line-height:1.7;color:#5a493f}
+.option{padding:26px;border-radius:22px;border:1px solid var(--line);background:white}
+.option.reco{border:2px solid var(--accent);background:#f6faf7}
+.option h3{font-size:24px;margin:5px 0 10px}
+.option .vote{display:inline-block;margin-top:16px;padding:10px 14px;border-radius:12px;background:var(--accent);color:#fff;font-weight:700}
+.footer{padding:24px 52px 38px;color:var(--muted);font-size:12px;line-height:1.7;border-top:1px solid var(--line)}
+.refs a{color:var(--accent);text-decoration:none}
+.navbottom{display:flex;justify-content:space-between;gap:12px;margin-top:34px}
+.navbtn{border:1px solid var(--line);background:white;border-radius:12px;padding:10px 14px;cursor:pointer}
+.navbtn.primary{background:var(--accent);color:white;border-color:var(--accent)}
+@media(max-width:780px){
+ .page{padding:28px 20px 42px}.brand{padding:15px 18px 8px}.tabs{padding:0 18px 12px}
+ h1{font-size:40px}.hero{min-height:520px}.hero-copy{left:25px;bottom:30px;width:84%}
+ .span4,.span5,.span6,.span7,.span8{grid-column:span 12}
+ .section-title{display:block}.footer{padding:22px 20px 30px}
+}
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="topbar">
+    <div class="brand">
+      <b>HOKKAIDO 2028 · NATURE ROAD TRIP</b>
+      <span>2028.10.17 — 11.04｜19 天・18 晚</span>
+    </div>
+    <div class="tabs" id="tabs">
+      <button class="tab active" data-page="0">01 提案</button>
+      <button class="tab" data-page="1">02 路線總覽</button>
+      <button class="tab" data-page="2">03 火山湖</button>
+      <button class="tab" data-page="3">04 羊蹄山</button>
+      <button class="tab" data-page="4">05 大雪山</button>
+      <button class="tab" data-page="5">06 阿寒摩周</button>
+      <button class="tab" data-page="6">07 知床</button>
+      <button class="tab" data-page="7">08 19天節奏</button>
+      <button class="tab" data-page="8">09 方案決策</button>
+    </div>
+  </div>
+
+  <main>
+    <section class="page active">
+      <div class="hero">
+        <div class="hero-copy">
+          <div class="kicker">Travel Proposal · Hokkaido</div>
+          <h1>把北海道當成一座<br>巨大的國家公園</h1>
+          <p>不以札幌、小樽、函館為主角；用 19 天沿著火山、湖泊、山岳、原始森林與鄂霍次克海，自駕穿越秋末到初冬的北海道。</p>
+          <div class="chips">
+            <span class="chip">大自然 70%+</span><span class="chip">健行</span><span class="chip">自駕</span>
+            <span class="chip">溫泉</span><span class="chip">愛努文化</span><span class="chip">秋末 × 初雪</span>
+          </div>
+        </div>
+      </div>
+      <div class="grid" style="margin-top:22px">
+        <div class="card span4"><div class="metric">19 天</div><div class="small">適合做完整自然大環線，不必天天換住宿。</div></div>
+        <div class="card span4"><div class="metric">3 大健行</div><div class="small">羊蹄山／Niseko、大雪山、雌阿寒岳；依雪況切換低海拔備案。</div></div>
+        <div class="card span4"><div class="metric">4 種地貌</div><div class="small">火山湖、高山、森林、海岸／濕地。</div></div>
+      </div>
+      <div class="navbottom"><span></span><button class="navbtn primary next">看整體路線 →</button></div>
+    </section>
+
+    <section class="page">
+      <div class="section-title"><div><div class="kicker">Route overview</div><h2>北海道自然大環線</h2></div><span class="badge">方向：順時針</span></div>
+      <p class="lead">前半由道央火山湖暖身，進入羊蹄山與大雪山；中段轉進阿寒摩周與知床荒野；最後用鄂霍次克海與十勝平原降低節奏，再回新千歲。</p>
+      <div class="route">
+        <span class="stop">新千歲</span><span class="arrow">→</span><span class="stop">支笏湖</span><span class="arrow">→</span>
+        <span class="stop">洞爺湖</span><span class="arrow">→</span><span class="stop">羊蹄山／Niseko</span><span class="arrow">→</span>
+        <span class="stop">美瑛／旭岳</span><span class="arrow">→</span><span class="stop">層雲峽</span><span class="arrow">→</span>
+        <span class="stop">阿寒摩周</span><span class="arrow">→</span><span class="stop">知床</span><span class="arrow">→</span>
+        <span class="stop">網走</span><span class="arrow">→</span><span class="stop">十勝</span><span class="arrow">→</span><span class="stop">新千歲</span>
+      </div>
+      <div class="grid">
+        <div class="photo shikotsu span6"><div class="cap"><b>支笏湖</b><span>清澈火山口湖 × 原始森林</span></div></div>
+        <div class="photo shiretoko span6"><div class="cap"><b>知床五湖</b><span>世界自然遺產 × 原生林 × 初雪山稜</span></div></div>
+        <div class="card span12 soft">
+          <b>這條線的旅行敘事</b>
+          <p style="line-height:1.8;margin-bottom:0">火山湖 → 蝦夷富士 → 北海道屋脊 → 火山荒野 → 世界自然遺產 → 鄂霍次克海 → 十勝大平原。</p>
+        </div>
+      </div>
+      <div class="navbottom"><button class="navbtn prev">← 上一頁</button><button class="navbtn primary next">進入道央火山湖 →</button></div>
+    </section>
+
+    <section class="page">
+      <div class="kicker">Days 1–3 · Shikotsu–Toya</div><h2>第一幕｜火山與湖</h2>
+      <p class="lead">落地後不進札幌，直接進自然。支笏湖的清澈湖水、樽前山系與洞爺湖—有珠山火山景觀，讓第一段兼具低壓暖身與高景觀回報。</p>
+      <div class="grid">
+        <div class="photo shikotsu span7"><div class="cap"><b>支笏湖</b><span>Lake Shikotsu · Day 1–2</span></div></div>
+        <div class="card span5">
+          <h3 style="margin-top:0">候選活動</h3>
+          <ul class="list"><li>湖畔森林散步／短健行</li><li>樽前山周邊：視道路與雪況決定</li><li>支笏湖溫泉</li><li>湖上活動作為天候好的加選</li></ul>
+          <div class="score"><span>景觀密度</span><b>★★★★★</b><div class="bar" style="grid-column:1/3"><i style="width:96%"></i></div>
+          <span>健行強度</span><b>★★☆☆☆</b><div class="bar" style="grid-column:1/3"><i style="width:40%"></i></div></div>
+        </div>
+        <div class="photo toya span6"><div class="cap"><b>洞爺湖 × 羊蹄山遠景</b><span>Lake Toya · Day 2–3</span></div></div>
+        <div class="card span6"><h3 style="margin-top:0">洞爺的角色</h3><p style="line-height:1.8">不是「看一個湖」，而是用有珠山、昭和新山、火山博物與溫泉，理解北海道島弧火山地貌。</p><div class="note">10 月底已進季節交界；高海拔步道不預先承諾，正式訂房前再確認 2028 年道路、纜車與積雪資訊。</div></div>
+      </div>
+      <div class="navbottom"><button class="navbtn prev">← 上一頁</button><button class="navbtn primary next">羊蹄山／Niseko →</button></div>
+    </section>
+
+    <section class="page">
+      <div class="kicker">Days 4–6 · Yotei–Niseko</div><h2>第二幕｜蝦夷富士</h2>
+      <p class="lead">羊蹄山海拔 1,898 m，以近乎完美的圓錐形被稱為「蝦夷富士」。這個時段最吸引人的不是硬拚登頂，而是山頂初雪、山腰秋末森林與山腳農地同框。</p>
+      <div class="grid">
+        <div class="photo toya span7"><div class="cap"><b>羊蹄山</b><span>把「看山」本身當成主景，而不是只追求登頂</span></div></div>
+        <div class="card span5">
+          <h3 style="margin-top:0">2–3 晚玩法</h3>
+          <ul class="list"><li>半月湖自然公園</li><li>真狩森林／羊蹄山自然公園</li><li>神仙沼：視道路與積雪</li><li>Niseko 低／中海拔健行</li><li>晴天安排環山攝影與農村道路</li></ul>
+        </div>
+        <div class="card span6 soft"><b>A 計畫｜山況穩定</b><p>挑一條中海拔健行，拉高「走進山裡」的比例。</p></div>
+        <div class="card span6"><b>B 計畫｜已進初冬</b><p>放棄登頂，改森林、半月湖、溫泉、環山公路與觀景點。</p></div>
+      </div>
+      <div class="navbottom"><button class="navbtn prev">← 上一頁</button><button class="navbtn primary next">大雪山核心 →</button></div>
+    </section>
+
+    <section class="page">
+      <div class="kicker">Days 7–10 · Daisetsuzan–Sounkyo</div><h2>第三幕｜北海道屋脊</h2>
+      <p class="lead">旭岳 2,291 m，是北海道最高峰。10 月下旬不要期待九月紅葉，而要把目標改成「雪山 × 火山蒸氣 × 山腳森林」。旭岳纜車可到海拔約 1,600 m 的姿見站，是高山景觀與天候風險之間很好的折衷。</p>
+      <div class="grid">
+        <div class="card span5">
+          <h3 style="margin-top:0">核心決策</h3>
+          <ul class="list"><li>好天氣：旭岳纜車＋姿見池周邊</li><li>雪況可控：延伸較長步行，但不預設登頂</li><li>惡劣天候：降到東川／美瑛森林與丘陵</li><li>層雲峽：作為大雪山東側的峽谷過渡站</li></ul>
+          <div class="note">官方目前資訊顯示旭岳纜車全年運行，但 11–12 月會有數日維修停駛；2028 確切日期需在出發前重新確認。</div>
+        </div>
+        <div class="photo shikotsu span7"><div class="cap"><b>大雪山概念</b><span>不是追紅葉，而是追季節切換與高山尺度</span></div></div>
+        <div class="card span12 soft"><b>為什麼值得住 3 晚？</b><p style="line-height:1.8;margin-bottom:0">高山天氣變化快。多留一天不是浪費，而是提高看到真正大景的機率；若其中一天山況差，仍可把時間移到美瑛、東川或低海拔森林。</p></div>
+      </div>
+      <div class="navbottom"><button class="navbtn prev">← 上一頁</button><button class="navbtn primary next">阿寒摩周 →</button></div>
+    </section>
+
+    <section class="page">
+      <div class="kicker">Days 11–13 · Akan–Mashu</div><h2>第四幕｜火山荒野與愛努文化</h2>
+      <p class="lead">這一段可能是整趟最完整的「自然＋文化」區域：阿寒湖、摩周湖、雌阿寒岳、Onnetō，把活火山、森林、火山湖、溫泉與愛努文化放在同一個地理單元。</p>
+      <div class="grid">
+        <div class="photo onneto span7"><div class="cap"><b>Onnetō × 雌阿寒岳</b><span>湖泊、火山、森林同框</span></div></div>
+        <div class="card span5">
+          <h3 style="margin-top:0">候選主菜</h3>
+          <ul class="list"><li>雌阿寒岳：視 2028 雪況與火山／登山資訊</li><li>Onnetō 湖畔散步</li><li>摩周湖展望／周邊短步道</li><li>阿寒湖森林與湖岸</li><li>阿寒湖愛努 Kotan</li></ul>
+        </div>
+        <div class="card span4"><div class="metric">★★★★★</div><div class="small">自然景觀</div></div>
+        <div class="card span4"><div class="metric">★★★★☆</div><div class="small">健行潛力</div></div>
+        <div class="card span4"><div class="metric">★★★★☆</div><div class="small">文化含量</div></div>
+      </div>
+      <div class="navbottom"><button class="navbtn prev">← 上一頁</button><button class="navbtn primary next">知床荒野 →</button></div>
+    </section>
+
+    <section class="page">
+      <div class="kicker">Days 14–17 · Shiretoko–Okhotsk</div><h2>第五幕｜山直接落進海裡</h2>
+      <p class="lead">知床是整趟荒野感最強的核心。五湖、原生森林、鹿與棕熊棲地，加上鄂霍次克海，使景觀從「山岳」切換成「山海交界」。</p>
+      <div class="grid">
+        <div class="photo shiretoko span8"><div class="cap"><b>知床五湖</b><span>3 km 地面步道＋高架木棧道</span></div></div>
+        <div class="card span4">
+          <h3 style="margin-top:0">至少 3 晚</h3>
+          <ul class="list"><li>知床五湖</li><li>Furepe 瀑布</li><li>知床自然中心</li><li>ウトロ海岸與夕景</li><li>知床峠：視冬季封路時間</li></ul>
+        </div>
+        <div class="card span12 soft">
+          <b>日期優勢</b>
+          <p style="line-height:1.8;margin-bottom:0">以目前官方季節資料作參考，知床五湖在 10/21–11/8 仍有營運時段；你的旅行日期會碰到這個非常特殊的秋末窗口。不過 2028 的實際開放日仍需出發前確認。</p>
+        </div>
+        <div class="card span6"><h3>網走／鄂霍次克</h3><p>濤沸湖、小清水原生花園、海岸線；文化可選北海道立北方民族博物館。</p></div>
+        <div class="card span6"><h3>十勝收尾</h3><p>把節奏從「荒野」降到農業平原、丘陵、溫泉，最後回新千歲。</p></div>
+      </div>
+      <div class="navbottom"><button class="navbtn prev">← 上一頁</button><button class="navbtn primary next">看 19 天配置 →</button></div>
+    </section>
+
+    <section class="page">
+      <div class="kicker">Draft schedule</div><h2>19 天節奏草案</h2>
+      <p class="lead">這不是最終逐日表，而是拿來確認「每個自然區域是否值得分配這麼多時間」。真正的住宿點與開車時間，會在路線方向確認後再精算。</p>
+      <table class="daytable">
+        <thead><tr><th>日期</th><th>區域</th><th>主題</th><th>住宿概念</th></tr></thead>
+        <tbody>
+          <tr><td>D1｜10/17</td><td>新千歲 → 支笏湖</td><td>落地、取車、湖畔暖身</td><td>支笏湖</td></tr>
+          <tr><td>D2</td><td>支笏湖</td><td>森林／湖泊／低強度健行</td><td>支笏湖或洞爺</td></tr>
+          <tr><td>D3</td><td>洞爺湖</td><td>火山地貌、溫泉</td><td>洞爺湖</td></tr>
+          <tr><td>D4–6</td><td>羊蹄山／Niseko</td><td>蝦夷富士、森林、中海拔健行</td><td>Niseko 3 晚</td></tr>
+          <tr><td>D7</td><td>Niseko → 美瑛／東川</td><td>長移動＋丘陵風景</td><td>東川／旭岳</td></tr>
+          <tr><td>D8–9</td><td>旭岳／大雪山</td><td>高山主景＋天候備援</td><td>旭岳 2 晚</td></tr>
+          <tr><td>D10</td><td>層雲峽</td><td>峽谷、瀑布、東進</td><td>層雲峽</td></tr>
+          <tr><td>D11–13</td><td>阿寒摩周</td><td>火山湖、雌阿寒岳、愛努文化</td><td>阿寒 3 晚</td></tr>
+          <tr><td>D14–16</td><td>知床</td><td>五湖、原生林、海岸</td><td>ウトロ 3 晚</td></tr>
+          <tr><td>D17</td><td>網走</td><td>鄂霍次克海、濕地／文化</td><td>網走</td></tr>
+          <tr><td>D18</td><td>十勝／帶廣</td><td>平原、農業景觀、收尾</td><td>帶廣</td></tr>
+          <tr><td>D19｜11/4</td><td>帶廣 → 新千歲</td><td>返程</td><td>—</td></tr>
+        </tbody>
+      </table>
+      <div class="note" style="margin-top:22px">正式版本會把「長距離移動日」與「重要健行日」錯開，並為大雪山、阿寒、知床至少保留可交換的天候彈性。</div>
+      <div class="navbottom"><button class="navbtn prev">← 上一頁</button><button class="navbtn primary next">最後：選哪一種玩法？ →</button></div>
+    </section>
+
+    <section class="page">
+      <div class="kicker">Decision page</div><h2>旅伴要先決定的，不是飯店，而是旅行密度</h2>
+      <p class="lead">兩個版本都以自然、健行、自駕為主；差別在於要不要「把北海道一口氣看完」。</p>
+      <div class="grid">
+        <div class="option span6">
+          <div class="badge">A</div><h3>北海道自然大環線</h3>
+          <p>羊蹄山、大雪山、阿寒摩周、知床、網走、十勝全部保留。</p>
+          <ul class="list"><li>優點：地貌最豐富、第一次看北海道很完整</li><li>代價：開車里程較高、住宿點較多</li><li>適合：大家都喜歡 road trip 本身</li></ul>
+          <span class="vote">選 A：我要看完整北海道</span>
+        </div>
+        <div class="option reco span6">
+          <div class="badge">B · 建議</div><h3>深度自然版</h3>
+          <p>刪掉 1–2 個過渡區，把時間還給羊蹄山、大雪山、阿寒與知床。</p>
+          <ul class="list"><li>優點：更多健行與好天氣等待時間</li><li>代價：少看一部分北海道</li><li>適合：自然品質 > 景點數量</li></ul>
+          <span class="vote">選 B：我要走深一點</span>
+        </div>
+        <div class="card span12 soft">
+          <b>我目前的推薦</b>
+          <p style="font-size:18px;line-height:1.8;margin-bottom:0">先以 B 深度自然版做下一輪規劃。10 月下旬到 11 月初正處季節交界，真正稀缺的是「好天氣的高山日」，不是多收一個城市或景點。</p>
+        </div>
+      </div>
+      <div class="navbottom"><button class="navbtn prev">← 上一頁</button><button class="navbtn primary" onclick="go(0)">回到封面 ↺</button></div>
+    </section>
+  </main>
+
+  <div class="footer">
+    <b>規劃狀態：</b>旅伴討論用 V1。2028 的道路封閉、纜車維修、登山道、雪況與知床設施營運時間尚未公布，本版以目前官方季節資訊作路線可行性判斷，正式訂房前需再次核對。<br>
+    <span class="refs">主要資料參考：
+      <a href="https://www.visit-hokkaido.jp/en/spot/detail_10145.html" target="_blank">Lake Shikotsu</a> ·
+      <a href="https://www.visit-hokkaido.jp/en/spot/detail_10334.html" target="_blank">Mt. Yotei</a> ·
+      <a href="https://www.visit-hokkaido.jp/en/spot/detail_10173.html" target="_blank">Mt. Asahidake</a> ·
+      <a href="https://www.visit-hokkaido.jp/en/spot/detail_10404.html" target="_blank">Shiretoko Goko Lakes</a>
+    </span>
+  </div>
+</div>
+<script>
+const pages=[...document.querySelectorAll('.page')], tabs=[...document.querySelectorAll('.tab')];
+let current=0;
+function go(i){
+  current=Math.max(0,Math.min(pages.length-1,i));
+  pages.forEach((p,n)=>p.classList.toggle('active',n===current));
+  tabs.forEach((t,n)=>t.classList.toggle('active',n===current));
+  tabs[current].scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+tabs.forEach((t,i)=>t.addEventListener('click',()=>go(i)));
+document.querySelectorAll('.next').forEach(b=>b.addEventListener('click',()=>go(current+1)));
+document.querySelectorAll('.prev').forEach(b=>b.addEventListener('click',()=>go(current-1)));
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight') go(current+1);
+  if(e.key==='ArrowLeft') go(current-1);
+});
+</script>
+</body>
+</html>
