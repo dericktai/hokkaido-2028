@@ -36,65 +36,468 @@
       var(--bg);
   }
   .slide.active{display:flex;flex-direction:column}
-  .eyebrow{color:var(--accent);font-size:1.05vw;letter-spacing:.14em;text-transform:uppercase;font-weight:700;margin-bottom:1.2vh}
+  .eyebrow{
+    color:var(--accent);
+    font-size:1.05vw;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    font-weight:700;
+    margin-bottom:1.2vh
+  }
   h1{font-size:3.2vw;line-height:1.18;margin:.2vh 0 1.7vh;font-weight:800}
   h2{font-size:2.35vw;line-height:1.25;margin:.3vh 0 2.2vh}
   h3{font-size:1.35vw;margin:.2vh 0 .8vh}
   p,li{font-size:1.05vw;line-height:1.62}
   .lead{font-size:1.45vw;color:#dbe3ec;max-width:80%;line-height:1.55}
-  .muted{color:var(--muted)} .accent{color:var(--accent)} .accent2{color:var(--accent2)}
+  .muted{color:var(--muted)}
+  .accent{color:var(--accent)}
+  .accent2{color:var(--accent2)}
+  .warn{color:var(--warn)}
   .grid2{display:grid;grid-template-columns:1fr 1fr;gap:1.5vw;flex:1}
   .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:1vw;flex:1}
   .grid5{display:grid;grid-template-columns:repeat(5,1fr);gap:.8vw;flex:1}
-  .card{background:linear-gradient(180deg, rgba(255,255,255,.025), rgba(255,255,255,.012));border:1px solid var(--line);border-radius:20px;padding:1.35vw}
+  .card{
+    background:linear-gradient(180deg, rgba(255,255,255,.025), rgba(255,255,255,.012));
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:1.35vw;
+  }
   .card strong{color:#fff}
-  .num{width:2.3vw;height:2.3vw;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--panel2);border:1px solid var(--line);color:var(--accent);font-weight:800;font-size:1vw;margin-bottom:1.2vh}
-  .flow{display:flex;align-items:center;justify-content:center;gap:.7vw;margin-top:2.4vh;flex-wrap:wrap}
-  .step{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:1.05vw 1.25vw;min-width:11vw;text-align:center;font-size:1.1vw;font-weight:700}
+  .num{
+    width:2.3vw;height:2.3vw;border-radius:50%;
+    display:inline-flex;align-items:center;justify-content:center;
+    background:var(--panel2);border:1px solid var(--line);
+    color:var(--accent);font-weight:800;font-size:1vw;margin-bottom:1.2vh
+  }
+  .flow{
+    display:flex;align-items:center;justify-content:center;gap:.7vw;
+    margin-top:2.4vh;flex-wrap:wrap
+  }
+  .step{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:1.05vw 1.25vw;
+    min-width:11vw;text-align:center;
+    font-size:1.1vw;font-weight:700
+  }
   .arrow{color:var(--accent);font-size:1.7vw}
-  .q{border-left:3px solid var(--accent);padding-left:.8vw;margin-top:1.1vh;color:#e9edf2}
-  table{width:100%;border-collapse:collapse;font-size:.88vw;background:rgba(255,255,255,.012)}
-  th,td{border:1px solid var(--line);padding:.65vw .7vw;vertical-align:top}
-  th{background:#1b2029;text-align:left} td.center,th.center{text-align:center}
-  .tag{display:inline-block;padding:.28vw .55vw;border-radius:999px;background:#1a2730;border:1px solid #2c4a5a;color:#bdeafe;font-size:.75vw;margin:.18vw .18vw .18vw 0}
+  .q{
+    border-left:3px solid var(--accent);
+    padding-left:.8vw;
+    margin-top:1.1vh;
+    color:#e9edf2
+  }
+  table{
+    width:100%;border-collapse:collapse;
+    font-size:.88vw;
+    background:rgba(255,255,255,.012)
+  }
+  th,td{
+    border:1px solid var(--line);
+    padding:.65vw .7vw;
+    vertical-align:top
+  }
+  th{background:#1b2029;text-align:left}
+  td.center,th.center{text-align:center}
+  .tag{
+    display:inline-block;padding:.28vw .55vw;border-radius:999px;
+    background:#1a2730;border:1px solid #2c4a5a;
+    color:#bdeafe;font-size:.75vw;margin:.18vw .18vw .18vw 0
+  }
   .legend{font-size:.86vw;color:var(--muted);margin-top:.9vh}
   .matrix .main{font-weight:800;color:#fff;background:rgba(125,211,252,.09)}
   .matrix .overlap{color:#d8dce3;background:rgba(196,181,253,.06)}
-  .bigline{font-size:2.05vw;line-height:1.5;font-weight:800;max-width:88%;margin-top:3vh}
+  .bigline{
+    font-size:2.05vw;line-height:1.5;font-weight:800;
+    max-width:88%;margin-top:3vh
+  }
   .keywords{display:flex;gap:.7vw;flex-wrap:wrap;margin-top:3vh}
-  .keyword{border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:.65vw 1vw;font-size:1vw}
-  .footer{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:1.2vh;color:#777f8c;font-size:.8vw}
-  .nav{position:fixed;right:1.6vw;bottom:1.8vh;display:flex;gap:.5vw;z-index:10}
-  .nav button{border:1px solid var(--line);background:#12151b;color:#dbe3ec;border-radius:12px;padding:.55vw .85vw;font-size:.86vw;cursor:pointer}
+  .keyword{
+    border:1px solid var(--line);background:var(--panel);
+    border-radius:999px;padding:.65vw 1vw;font-size:1vw
+  }
+  .footer{
+    display:flex;justify-content:space-between;align-items:center;
+    margin-top:auto;padding-top:1.2vh;color:#777f8c;font-size:.8vw
+  }
+  .nav{
+    position:fixed;right:1.6vw;bottom:1.8vh;display:flex;gap:.5vw;z-index:10
+  }
+  .nav button{
+    border:1px solid var(--line);background:#12151b;color:#dbe3ec;
+    border-radius:12px;padding:.55vw .85vw;font-size:.86vw;cursor:pointer
+  }
   .nav button:hover{border-color:var(--accent)}
-  .small{font-size:.9vw;line-height:1.52}.mini{font-size:.8vw;line-height:1.45}.divider{height:1px;background:var(--line);margin:1.2vh 0}
-  @media print{body{overflow:visible;background:#fff}.slide{display:flex!important;page-break-after:always;height:100vh}.nav{display:none}}
-  .slide1 .flow,.slide4 .flow{width:88%;margin-left:auto;margin-right:auto;justify-content:space-between;gap:1vw}
-  .slide1 .step,.slide4 .step{flex:1 1 0;min-width:0;padding:1.2vw 1.05vw;font-size:1.18vw}
-  .slide1 .arrow,.slide4 .arrow{font-size:2vw}
-  .slide2 .grid2{gap:2.2vw}.slide2 .card{padding:2vw;border-width:2px}
-  .slide2 .card:first-child{border-color:rgba(125,211,252,.8);box-shadow:0 0 0 1px rgba(125,211,252,.08),0 0 28px rgba(125,211,252,.08)}
-  .slide2 .card:nth-child(2){border-color:rgba(196,181,253,.8);box-shadow:0 0 0 1px rgba(196,181,253,.08),0 0 28px rgba(196,181,253,.08)}
-  .slide2 h3{font-size:2vw;margin-bottom:1.4vh}.slide2 .card:first-child h3,.slide2 .card:first-child .num{color:var(--accent)}.slide2 .card:nth-child(2) h3,.slide2 .card:nth-child(2) .num{color:var(--accent2)}
-  .slide2 .card p{font-size:1.18vw}.slide2 .q{font-size:1.15vw;line-height:1.55}
-  .slide3 .grid4{gap:1.25vw}.slide3 .card{padding:1.55vw 1.45vw}.slide3 .card h3{font-size:1.9vw;margin-bottom:1.5vh;line-height:1.2}
-  .slide3 .card:nth-child(1) h3,.slide3 .card:nth-child(2) h3{color:var(--accent)}.slide3 .card:nth-child(3) h3,.slide3 .card:nth-child(4) h3{color:var(--accent2)}
-  .question-label{display:inline-block;padding:.28vw .58vw;border-radius:8px;font-weight:800;font-size:.95vw;margin-bottom:.35vh;border:1px solid rgba(255,255,255,.08)}
-  .question-label.blue{color:#d9f4ff;background:rgba(125,211,252,.16);border-color:rgba(125,211,252,.35)}
-  .question-label.purple{color:#efe8ff;background:rgba(196,181,253,.16);border-color:rgba(196,181,253,.35)}
-  .slide3 .small{font-size:.92vw;line-height:1.5}.slide3 .small + .small{margin-top:1.35vh}
-  .slide4 .step:nth-of-type(1),.slide4 .step:nth-of-type(3){border-color:rgba(125,211,252,.65)}
-  .slide4 .step:nth-of-type(5),.slide4 .step:nth-of-type(7){border-color:rgba(196,181,253,.65)}
+  .small{font-size:.9vw;line-height:1.52}
+  .mini{font-size:.8vw;line-height:1.45}
+  .divider{height:1px;background:var(--line);margin:1.2vh 0}
+  @media print{
+    body{overflow:visible;background:#fff}
+    .slide{display:flex!important;page-break-after:always;height:100vh}
+    .nav{display:none}
+  }
+
+  /* v2 visual emphasis */
+  .slide1 .flow,
+  .slide4 .flow{
+    width:88%;
+    margin-left:auto;
+    margin-right:auto;
+    justify-content:space-between;
+    gap:1vw;
+  }
+  .slide1 .step,
+  .slide4 .step{
+    flex:1 1 0;
+    min-width:0;
+    padding:1.2vw 1.05vw;
+    font-size:1.18vw;
+  }
+  .slide1 .arrow,
+  .slide4 .arrow{
+    font-size:2vw;
+  }
+  .slide2 .grid2{
+    gap:2.2vw;
+  }
+  .slide2 .card{
+    padding:2vw;
+    border-width:2px;
+  }
+  .slide2 .card:first-child{
+    border-color:rgba(125,211,252,.8);
+    box-shadow:0 0 0 1px rgba(125,211,252,.08), 0 0 28px rgba(125,211,252,.08);
+  }
+  .slide2 .card:nth-child(2){
+    border-color:rgba(196,181,253,.8);
+    box-shadow:0 0 0 1px rgba(196,181,253,.08), 0 0 28px rgba(196,181,253,.08);
+  }
+  .slide2 h3{
+    font-size:2vw;
+    margin-bottom:1.4vh;
+  }
+  .slide2 .card:first-child h3,
+  .slide2 .card:first-child .num{ color:var(--accent); }
+  .slide2 .card:nth-child(2) h3,
+  .slide2 .card:nth-child(2) .num{ color:var(--accent2); }
+  .slide2 .card p{
+    font-size:1.18vw;
+  }
+  .slide2 .q{
+    font-size:1.15vw;
+    line-height:1.55;
+  }
+
+  .slide3 .grid4{ gap:1.25vw; }
+  .slide3 .card{
+    padding:1.55vw 1.45vw;
+  }
+  .slide3 .card h3{
+    font-size:1.9vw;
+    margin-bottom:1.5vh;
+    line-height:1.2;
+  }
+  .slide3 .card:nth-child(1) h3,
+  .slide3 .card:nth-child(2) h3{ color:var(--accent); }
+  .slide3 .card:nth-child(3) h3,
+  .slide3 .card:nth-child(4) h3{ color:var(--accent2); }
+
+  .question-label{
+    display:inline-block;
+    padding:.28vw .58vw;
+    border-radius:8px;
+    font-weight:800;
+    font-size:.95vw;
+    margin-bottom:.35vh;
+    border:1px solid rgba(255,255,255,.08);
+  }
+  .question-label.blue{
+    color:#d9f4ff;
+    background:rgba(125,211,252,.16);
+    border-color:rgba(125,211,252,.35);
+  }
+  .question-label.purple{
+    color:#efe8ff;
+    background:rgba(196,181,253,.16);
+    border-color:rgba(196,181,253,.35);
+  }
+  .slide3 .small{
+    font-size:.92vw;
+    line-height:1.5;
+  }
+  .slide3 .small + .small{
+    margin-top:1.35vh;
+  }
+
+  .slide4 .step:nth-of-type(1),
+  .slide4 .step:nth-of-type(3){ border-color:rgba(125,211,252,.65); }
+  .slide4 .step:nth-of-type(5),
+  .slide4 .step:nth-of-type(7){ border-color:rgba(196,181,253,.65); }
+
 </style>
 </head>
 <body>
 <div class="deck">
-<section class="slide active slide1"><div class="eyebrow">2026 CISO Annual Meeting / Internal Brief</div><h1>CISO 年會工作坊設計總覽</h1><p class="lead">核心命題：<strong>AI Adoption 已快速前進，但 AI Security Governance 並未同步成熟。</strong><br>透過兩段工作坊，先由 CISO 找出產業成熟度落差，再由贊助商從不同控制面拆解可行解法。</p><div class="flow" style="margin-top:7vh"><div class="step">CISO 產業分組</div><div class="arrow">→</div><div class="step">辨識成熟度 Gap</div><div class="arrow">→</div><div class="step">排定優先行動</div><div class="arrow">→</div><div class="step">Sponsor 解法拆解</div><div class="arrow">→</div><div class="step">形成治理路徑</div></div><div class="bigline">不是再講一次「AI 很危險」，而是回答：<span class="accent">企業 AI 已經走到哪裡，但資安治理還停在哪裡？</span></div><div class="keywords"><div class="keyword">AI Security Maturity</div><div class="keyword">AI Governance</div><div class="keyword">Agent Security</div><div class="keyword">Data Security</div><div class="keyword">Threat Management</div></div><div class="footer"><span>CIO Taiwan｜Internal Working Deck</span><span>1 / 7</span></div></section>
-<section class="slide slide2"><div class="eyebrow">01 / Overall Logic</div><h2>兩段工作坊的前後關係：先提出問題，再拆解問題</h2><div class="grid2"><div class="card"><div class="num">1</div><h3>CISO 閉門工作坊</h3><p><strong class="accent">提出問題：</strong>讓各產業 CISO 自己說出成熟度落差與優先缺口。</p><div class="divider"></div><p class="q"><strong>現況：</strong>AI / Agent 已導入到哪裡？</p><p class="q"><strong>缺口：</strong>資料、權限、第三方、事件應變、責任哪裡最弱？</p><p class="q"><strong>優先：</strong>未來 12 個月先補哪 2–3 項？</p><p class="mini muted">分組：金融／製造／高科技／其他（醫療、流通、服務）</p></div><div class="card"><div class="num">2</div><h3>贊助商工作坊</h3><p><strong class="accent2">拆解問題：</strong>從不同技術與治理控制面，回應前段所揭露的共通問題。</p><div class="divider"></div><p class="q">AI 使用治理</p><p class="q">AI Threat / Threat Intelligence</p><p class="q">Data Security & Accountability</p><p class="q">Agent Security & Runtime Control</p><p class="q">AI Governance & Operating Model</p></div></div><div class="flow"><div class="step">產業現況</div><div class="arrow">→</div><div class="step">Gap</div><div class="arrow">→</div><div class="step">Priority</div><div class="arrow">→</div><div class="step">Control</div><div class="arrow">→</div><div class="step">Governance</div></div><div class="footer"><span>設計原則：CISO 先定義問題，Sponsor 再提供方法</span><span>2 / 7</span></div></section>
-<section class="slide slide3"><div class="eyebrow">02 / CISO Closed-door Workshop</div><h2>四大產業分組：每組兩題，聚焦「成熟度落差＋下一步行動」</h2><div class="grid4"><div class="card"><h3 class="accent">金融</h3><p class="small"><span class="question-label blue">問題一｜治理門檻</span><br>AI / Agent 接觸客戶資料、交易流程與內部知識庫後，最大門檻是資料、權限、第三方模型、法遵，還是責任歸屬？</p><p class="small"><span class="question-label purple">問題二｜上線底線</span><br>未來 12 個月若 Agent 必須正式上線，哪些控制屬於「沒有就不能上線」？請排前三項。</p></div><div class="card"><h3 class="accent">製造</h3><p class="small"><span class="question-label blue">問題一｜看不見的風險</span><br>AI 進入研發、工程、產線與供應鏈後，最大盲點是 Shadow AI、研發資料外洩、第三方 AI、OT/IT 邊界，還是 Agent 權限？</p><p class="small"><span class="question-label purple">問題二｜創新與安全</span><br>如何不阻礙工程創新，又能把 AI 從「員工自行使用」推進到「企業可控使用」？</p></div><div class="card"><h3 class="accent">高科技</h3><p class="small"><span class="question-label blue">問題一｜研發環境</span><br>Coding Agent、RAG、LLM 與外部 AI 工具進入研發流程後，最難保護的是 Source Code、Credential、IP、模型供應鏈，還是 Agent 行為？</p><p class="small"><span class="question-label purple">問題二｜Agent 權限</span><br>當 Agent 可以讀檔、改 Code、呼叫 API 與執行指令，哪些行動一定需要最小權限或 Human-in-the-Loop？</p></div><div class="card"><h3 class="accent">其他</h3><p class="small"><span class="question-label blue">問題一｜有限資源</span><br>醫療／流通／服務業 AI 應用增加，但資安資源有限時，最大的治理斷層在哪裡？</p><p class="small"><span class="question-label purple">問題二｜最小基線</span><br>若不能一次建立完整 AI Governance，最小可行的 AI Security Baseline 應先包含哪三項？</p></div></div><div class="footer"><span>預期：各組產出 2–3 項最重要 AI Security Gap</span><span>3 / 7</span></div></section>
-<section class="slide slide4"><div class="eyebrow">03 / Closed-door Output</div><h2>閉門工作坊不是討論「所有問題」，而是逼出優先順序</h2><div class="flow" style="margin-top:7vh"><div class="step"><strong>現況</strong><br><span class="mini muted">AI 已導入到哪裡？</span></div><div class="arrow">→</div><div class="step"><strong>Gap</strong><br><span class="mini muted">治理落後在哪裡？</span></div><div class="arrow">→</div><div class="step"><strong>Priority</strong><br><span class="mini muted">哪幾項不能再等？</span></div><div class="arrow">→</div><div class="step"><strong>Action</strong><br><span class="mini muted">未來 12 個月怎麼補？</span></div></div><div class="grid2" style="margin-top:5vh;flex:0 0 auto"><div class="card"><h3>我們要觀察的成熟度落差</h3><p>企業可能已進入 <strong>Level 2–3 的 AI Adoption</strong>：有政策、有 PoC、有部分技術控制；但 Agent Identity、Runtime Monitoring、AI IR、Kill Switch 等仍停留在 Level 1–2。</p></div><div class="card"><h3>最後要帶出的管理問題</h3><p><strong>如果 AI 導入成熟度已到 Level 3，但 AI Security 還在 Level 1，你未來 12 個月最先補哪一項？</strong></p></div></div><div class="footer"><span>核心：讓調查數據與現場 CISO 經驗互相驗證</span><span>4 / 7</span></div></section>
-<section class="slide"><div class="eyebrow">04 / Sponsor Workshop Roles</div><h2>五家贊助商的核心切分：一家公司一個「主要責任區域」</h2><div class="grid5"><div class="card"><h3>數位資安</h3><p><strong class="accent">AI 使用治理</strong></p><p class="small">我們有哪些 AI / Agent 正在被使用，而且資安看得到嗎？</p><div class="tag">Shadow AI</div><div class="tag">使用邊界</div><div class="tag">資料外洩</div></div><div class="card"><h3>展碁 × Kaspersky</h3><p><strong class="accent">Threat Intelligence</strong></p><p class="small">攻擊者如何利用 AI？AI 又產生哪些新的攻擊面？</p><div class="tag">AI Threat</div><div class="tag">Supply Chain</div><div class="tag">Credential</div></div><div class="card"><h3>智安數據</h3><p><strong class="accent">Data Security</strong></p><p class="small">AI 到底讀了哪些企業資料，而且事後能不能追得回來？</p><div class="tag">RAG</div><div class="tag">Audit Trail</div><div class="tag">Accountability</div></div><div class="card"><h3>Cloudflare</h3><p><strong class="accent">Agent Security</strong></p><p class="small">Agent 可以存取什麼、做什麼，以及怎麼即時限制？</p><div class="tag">Identity</div><div class="tag">API / MCP</div><div class="tag">Runtime</div></div><div class="card"><h3>萬里雲</h3><p><strong class="accent">AI Governance</strong></p><p class="small">企業如何把零散控制正式變成制度與營運機制？</p><div class="tag">Inventory</div><div class="tag">Risk</div><div class="tag">Operating Model</div></div></div><div class="flow"><div class="step">看見問題</div><div class="arrow">→</div><div class="step">看懂威脅</div><div class="arrow">→</div><div class="step">看住資料</div><div class="arrow">→</div><div class="step">管住 Agent</div><div class="arrow">→</div><div class="step">建立制度</div></div><div class="footer"><span>每家有主責，但保留 20–30% 合理重疊</span><span>5 / 7</span></div></section>
-<section class="slide"><div class="eyebrow">05 / Overlap Matrix</div><h2>允許重疊，但不能失去主軸：審題時用「主責＋合理延伸」判斷</h2><table class="matrix"><thead><tr><th>議題</th><th class="center">數位資安</th><th class="center">展碁 × Kaspersky</th><th class="center">智安數據</th><th class="center">Cloudflare</th><th class="center">萬里雲</th></tr></thead><tbody><tr><td>Shadow AI / AI 使用治理</td><td class="center main">主</td><td></td><td></td><td class="center overlap">○</td><td class="center overlap">○</td></tr><tr><td>AI Threat / Threat Intelligence</td><td class="center overlap">○</td><td class="center main">主</td><td></td><td class="center overlap">○</td><td class="center overlap">○</td></tr><tr><td>Data Security / RAG / Audit</td><td class="center overlap">○</td><td></td><td class="center main">主</td><td class="center overlap">○</td><td class="center overlap">○</td></tr><tr><td>Agent Identity / Access / API / MCP</td><td class="center overlap">○</td><td class="center overlap">○</td><td class="center overlap">○</td><td class="center main">主</td><td class="center overlap">○</td></tr><tr><td>Runtime Monitoring / Guardrails</td><td></td><td class="center overlap">○</td><td class="center overlap">○</td><td class="center main">主</td><td class="center overlap">○</td></tr><tr><td>AI Governance Framework / Operating Model</td><td class="center overlap">○</td><td></td><td class="center overlap">○</td><td class="center overlap">○</td><td class="center main">主</td></tr></tbody></table><p class="legend"><strong>主</strong>＝主要責任區；<strong>○</strong>＝可以合理延伸。重疊不是問題，真正要避免的是五家都只談「泛 AI Security」。</p><div class="card" style="margin-top:2.4vh"><h3>內部審題判斷標準</h3><p class="small">① 是否能清楚回答一家主要問題？　② 是否與其他 Sponsor 有明確主次？　③ 重疊內容是否只是支撐，而不是搶走他人主題？　④ 是否最終能回扣 CISO Insight 的成熟度 Gap？</p></div><div class="footer"><span>建議：Sponsor 提題時，以此矩陣做內部校準</span><span>6 / 7</span></div></section>
-<section class="slide"><div class="eyebrow">06 / Final Message</div><h2>整場 CISO 年會要傳達的核心結論</h2><div class="bigline"><span class="accent">AI Adoption 已經進入下一階段，</span><br>但多數企業的 <span class="accent2">AI Security Governance 並未同步升級。</span></div><p class="lead" style="margin-top:3vh;max-width:90%">真正的風險，不只是 AI 本身，而是 AI 已取得<strong>資料、身分與執行能力</strong>後，企業仍沿用過去以「人」為中心的治理制度。</p><div class="grid2" style="margin-top:4vh;flex:0 0 auto"><div class="card"><h3>CISO 閉門工作坊</h3><p><strong>找出問題：</strong>各產業成熟度落差在哪裡？未來 12 個月最先補什麼？</p></div><div class="card"><h3>贊助商工作坊</h3><p><strong>拆解問題：</strong>從使用治理、威脅、資料、Agent Control 到制度化治理，形成完整解法路徑。</p></div></div><div class="keywords"><div class="keyword">AI Security Maturity</div><div class="keyword">AI Governance</div><div class="keyword">Agent Security</div><div class="keyword">Data Security</div><div class="keyword">Threat Management</div></div><div class="footer"><span>CIO Taiwan｜CISO Annual Meeting Internal Brief</span><span>7 / 7</span></div></section>
-</div><div class="nav"><button onclick="prevSlide()">← 上一頁</button><button onclick="nextSlide()">下一頁 →</button></div><script>let idx=0;const slides=[...document.querySelectorAll('.slide')];function show(i){slides.forEach(s=>s.classList.remove('active'));idx=(i+slides.length)%slides.length;slides[idx].classList.add('active')}function nextSlide(){show(idx+1)}function prevSlide(){show(idx-1)}document.addEventListener('keydown',e=>{if(['ArrowRight','PageDown',' '].includes(e.key))nextSlide();if(['ArrowLeft','PageUp'].includes(e.key))prevSlide()});</script>
-</body></html>
+
+<section class="slide active slide1">
+  <div class="eyebrow">2026 CISO Annual Meeting / Internal Brief</div>
+  <h1>CISO 年會工作坊設計總覽</h1>
+  <p class="lead">核心命題：<strong>AI Adoption 已快速前進，但 AI Security Governance 並未同步成熟。</strong><br>
+  透過兩段工作坊，先由 CISO 找出產業成熟度落差，再由贊助商從不同控制面拆解可行解法。</p>
+  <div class="flow" style="margin-top:7vh">
+    <div class="step">CISO 產業分組</div><div class="arrow">→</div>
+    <div class="step">辨識成熟度 Gap</div><div class="arrow">→</div>
+    <div class="step">排定優先行動</div><div class="arrow">→</div>
+    <div class="step">Sponsor 解法拆解</div><div class="arrow">→</div>
+    <div class="step">形成治理路徑</div>
+  </div>
+  <div class="bigline">不是再講一次「AI 很危險」，而是回答：<span class="accent">企業 AI 已經走到哪裡，但資安治理還停在哪裡？</span></div>
+  <div class="keywords">
+    <div class="keyword">AI Security Maturity</div>
+    <div class="keyword">AI Governance</div>
+    <div class="keyword">Agent Security</div>
+    <div class="keyword">Data Security</div>
+    <div class="keyword">Threat Management</div>
+  </div>
+  <div class="footer"><span>CIO Taiwan｜Internal Working Deck</span><span>1 / 7</span></div>
+</section>
+
+<section class="slide slide2">
+  <div class="eyebrow">01 / Overall Logic</div>
+  <h2>兩段工作坊的前後關係：先提出問題，再拆解問題</h2>
+  <div class="grid2">
+    <div class="card">
+      <div class="num">1</div>
+      <h3>CISO 閉門工作坊</h3>
+      <p><strong class="accent">提出問題：</strong>讓各產業 CISO 自己說出成熟度落差與優先缺口。</p>
+      <div class="divider"></div>
+      <p class="q"><strong>現況：</strong>AI / Agent 已導入到哪裡？</p>
+      <p class="q"><strong>缺口：</strong>資料、權限、第三方、事件應變、責任哪裡最弱？</p>
+      <p class="q"><strong>優先：</strong>未來 12 個月先補哪 2–3 項？</p>
+      <p class="mini muted">分組：金融／製造／高科技／其他（醫療、流通、服務）</p>
+    </div>
+    <div class="card">
+      <div class="num">2</div>
+      <h3>贊助商工作坊</h3>
+      <p><strong class="accent2">拆解問題：</strong>從不同技術與治理控制面，回應前段所揭露的共通問題。</p>
+      <div class="divider"></div>
+      <p class="q">AI 使用治理</p>
+      <p class="q">AI Threat / Threat Intelligence</p>
+      <p class="q">Data Security & Accountability</p>
+      <p class="q">Agent Security & Runtime Control</p>
+      <p class="q">AI Governance & Operating Model</p>
+    </div>
+  </div>
+  <div class="flow">
+    <div class="step">產業現況</div><div class="arrow">→</div>
+    <div class="step">Gap</div><div class="arrow">→</div>
+    <div class="step">Priority</div><div class="arrow">→</div>
+    <div class="step">Control</div><div class="arrow">→</div>
+    <div class="step">Governance</div>
+  </div>
+  <div class="footer"><span>設計原則：CISO 先定義問題，Sponsor 再提供方法</span><span>2 / 7</span></div>
+</section>
+
+<section class="slide slide3">
+  <div class="eyebrow">02 / CISO Closed-door Workshop</div>
+  <h2>四大產業分組：每組兩題，聚焦「成熟度落差＋下一步行動」</h2>
+  <div class="grid4">
+    <div class="card">
+      <h3 class="accent">金融</h3>
+      <p class="small"><span class="question-label blue">問題一｜治理門檻</span><br>AI / Agent 接觸客戶資料、交易流程與內部知識庫後，最大門檻是資料、權限、第三方模型、法遵，還是責任歸屬？</p>
+      <p class="small"><span class="question-label purple">問題二｜上線底線</span><br>未來 12 個月若 Agent 必須正式上線，哪些控制屬於「沒有就不能上線」？請排前三項。</p>
+    </div>
+    <div class="card">
+      <h3 class="accent">製造</h3>
+      <p class="small"><span class="question-label blue">問題一｜看不見的風險</span><br>AI 進入研發、工程、產線與供應鏈後，最大盲點是 Shadow AI、研發資料外洩、第三方 AI、OT/IT 邊界，還是 Agent 權限？</p>
+      <p class="small"><span class="question-label purple">問題二｜創新與安全</span><br>如何不阻礙工程創新，又能把 AI 從「員工自行使用」推進到「企業可控使用」？</p>
+    </div>
+    <div class="card">
+      <h3 class="accent">高科技</h3>
+      <p class="small"><span class="question-label blue">問題一｜研發環境</span><br>Coding Agent、RAG、LLM 與外部 AI 工具進入研發流程後，最難保護的是 Source Code、Credential、IP、模型供應鏈，還是 Agent 行為？</p>
+      <p class="small"><span class="question-label purple">問題二｜Agent 權限</span><br>當 Agent 可以讀檔、改 Code、呼叫 API 與執行指令，哪些行動一定需要最小權限或 Human-in-the-Loop？</p>
+    </div>
+    <div class="card">
+      <h3 class="accent">其他</h3>
+      <p class="small"><span class="question-label blue">問題一｜有限資源</span><br>醫療／流通／服務業 AI 應用增加，但資安資源有限時，最大的治理斷層在哪裡？</p>
+      <p class="small"><span class="question-label purple">問題二｜最小基線</span><br>若不能一次建立完整 AI Governance，最小可行的 AI Security Baseline 應先包含哪三項？</p>
+    </div>
+  </div>
+  <div class="footer"><span>預期：各組產出 2–3 項最重要 AI Security Gap</span><span>3 / 7</span></div>
+</section>
+
+<section class="slide slide4">
+  <div class="eyebrow">03 / Closed-door Output</div>
+  <h2>閉門工作坊不是討論「所有問題」，而是逼出優先順序</h2>
+  <div class="flow" style="margin-top:7vh">
+    <div class="step"><strong>現況</strong><br><span class="mini muted">AI 已導入到哪裡？</span></div>
+    <div class="arrow">→</div>
+    <div class="step"><strong>Gap</strong><br><span class="mini muted">治理落後在哪裡？</span></div>
+    <div class="arrow">→</div>
+    <div class="step"><strong>Priority</strong><br><span class="mini muted">哪幾項不能再等？</span></div>
+    <div class="arrow">→</div>
+    <div class="step"><strong>Action</strong><br><span class="mini muted">未來 12 個月怎麼補？</span></div>
+  </div>
+  <div class="grid2" style="margin-top:5vh;flex:0 0 auto">
+    <div class="card">
+      <h3>我們要觀察的成熟度落差</h3>
+      <p>企業可能已進入 <strong>Level 2–3 的 AI Adoption</strong>：有政策、有 PoC、有部分技術控制；但 Agent Identity、Runtime Monitoring、AI IR、Kill Switch 等仍停留在 Level 1–2。</p>
+    </div>
+    <div class="card">
+      <h3>最後要帶出的管理問題</h3>
+      <p><strong>如果 AI 導入成熟度已到 Level 3，但 AI Security 還在 Level 1，你未來 12 個月最先補哪一項？</strong></p>
+    </div>
+  </div>
+  <div class="footer"><span>核心：讓調查數據與現場 CISO 經驗互相驗證</span><span>4 / 7</span></div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">04 / Sponsor Workshop Roles</div>
+  <h2>五家贊助商的核心切分：一家公司一個「主要責任區域」</h2>
+  <div class="grid5">
+    <div class="card">
+      <h3>數位資安</h3>
+      <p><strong class="accent">AI 使用治理</strong></p>
+      <p class="small">我們有哪些 AI / Agent 正在被使用，而且資安看得到嗎？</p>
+      <div class="tag">Shadow AI</div><div class="tag">使用邊界</div><div class="tag">資料外洩</div>
+    </div>
+    <div class="card">
+      <h3>展碁 × Kaspersky</h3>
+      <p><strong class="accent">Threat Intelligence</strong></p>
+      <p class="small">攻擊者如何利用 AI？AI 又產生哪些新的攻擊面？</p>
+      <div class="tag">AI Threat</div><div class="tag">Supply Chain</div><div class="tag">Credential</div>
+    </div>
+    <div class="card">
+      <h3>智安數據</h3>
+      <p><strong class="accent">Data Security</strong></p>
+      <p class="small">AI 存取了哪些企業資料？是合法授權還是異常行為？全程是否可追溯？</p>
+      <div class="tag">RAG</div><div class="tag">Audit Trail</div><div class="tag">Accountability</div>
+    </div>
+    <div class="card">
+      <h3>Cloudflare</h3>
+      <p><strong class="accent">Agent Security</strong></p>
+      <p class="small">Agent 可以存取什麼、做什麼，以及怎麼即時限制？</p>
+      <div class="tag">Identity</div><div class="tag">API / MCP</div><div class="tag">Runtime</div>
+    </div>
+    <div class="card">
+      <h3>萬里雲</h3>
+      <p><strong class="accent">AI Governance</strong></p>
+      <p class="small">企業如何把零散控制正式變成制度與營運機制？</p>
+      <div class="tag">Inventory</div><div class="tag">Risk</div><div class="tag">Operating Model</div>
+    </div>
+  </div>
+  <div class="flow">
+    <div class="step">看見問題</div><div class="arrow">→</div>
+    <div class="step">看懂威脅</div><div class="arrow">→</div>
+    <div class="step">看住資料</div><div class="arrow">→</div>
+    <div class="step">管住 Agent</div><div class="arrow">→</div>
+    <div class="step">建立制度</div>
+  </div>
+  <div class="footer"><span>每家有主責，但保留 20–30% 合理重疊</span><span>5 / 7</span></div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">05 / Overlap Matrix</div>
+  <h2>允許重疊，但不能失去主軸：審題時用「主責＋合理延伸」判斷</h2>
+  <table class="matrix">
+    <thead>
+      <tr>
+        <th>議題</th>
+        <th class="center">數位資安</th>
+        <th class="center">展碁 × Kaspersky</th>
+        <th class="center">智安數據</th>
+        <th class="center">Cloudflare</th>
+        <th class="center">萬里雲</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Shadow AI / AI 使用治理</td>
+        <td class="center main">主</td><td></td><td></td><td class="center overlap">○</td><td class="center overlap">○</td>
+      </tr>
+      <tr>
+        <td>AI Threat / Threat Intelligence</td>
+        <td class="center overlap">○</td><td class="center main">主</td><td></td><td class="center overlap">○</td><td class="center overlap">○</td>
+      </tr>
+      <tr>
+        <td>Data Security / RAG / Audit</td>
+        <td class="center overlap">○</td><td></td><td class="center main">主</td><td class="center overlap">○</td><td class="center overlap">○</td>
+      </tr>
+      <tr>
+        <td>Agent Identity / Access / API / MCP</td>
+        <td class="center overlap">○</td><td class="center overlap">○</td><td class="center overlap">○</td><td class="center main">主</td><td class="center overlap">○</td>
+      </tr>
+      <tr>
+        <td>Runtime Monitoring / Guardrails</td>
+        <td></td><td class="center overlap">○</td><td class="center overlap">○</td><td class="center main">主</td><td class="center overlap">○</td>
+      </tr>
+      <tr>
+        <td>AI Governance Framework / Operating Model</td>
+        <td class="center overlap">○</td><td></td><td class="center overlap">○</td><td class="center overlap">○</td><td class="center main">主</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="legend"><strong>主</strong>＝主要責任區；<strong>○</strong>＝可以合理延伸。重疊不是問題，真正要避免的是五家都只談「泛 AI Security」。</p>
+  <div class="card" style="margin-top:2.4vh">
+    <h3>內部審題判斷標準</h3>
+    <p class="small">① 是否能清楚回答一家主要問題？　② 是否與其他 Sponsor 有明確主次？　③ 重疊內容是否只是支撐，而不是搶走他人主題？　④ 是否最終能回扣 CISO Insight 的成熟度 Gap？</p>
+  </div>
+  <div class="footer"><span>建議：Sponsor 提題時，以此矩陣做內部校準</span><span>6 / 7</span></div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">06 / Final Message</div>
+  <h2>整場 CISO 年會要傳達的核心結論</h2>
+  <div class="bigline">
+    <span class="accent">AI Adoption 已經進入下一階段，</span><br>
+    但多數企業的 <span class="accent2">AI Security Governance 並未同步升級。</span>
+  </div>
+  <p class="lead" style="margin-top:3vh;max-width:90%">
+    真正的風險，不只是 AI 本身，而是 AI 已取得<strong>資料、身分與執行能力</strong>後，
+    企業仍沿用過去以「人」為中心的治理制度。
+  </p>
+  <div class="grid2" style="margin-top:4vh;flex:0 0 auto">
+    <div class="card">
+      <h3>CISO 閉門工作坊</h3>
+      <p><strong>找出問題：</strong>各產業成熟度落差在哪裡？未來 12 個月最先補什麼？</p>
+    </div>
+    <div class="card">
+      <h3>贊助商工作坊</h3>
+      <p><strong>拆解問題：</strong>從使用治理、威脅、資料、Agent Control 到制度化治理，形成完整解法路徑。</p>
+    </div>
+  </div>
+  <div class="keywords">
+    <div class="keyword">AI Security Maturity</div>
+    <div class="keyword">AI Governance</div>
+    <div class="keyword">Agent Security</div>
+    <div class="keyword">Data Security</div>
+    <div class="keyword">Threat Management</div>
+  </div>
+  <div class="footer"><span>CIO Taiwan｜CISO Annual Meeting Internal Brief</span><span>7 / 7</span></div>
+</section>
+
+</div>
+
+<div class="nav">
+  <button onclick="prevSlide()">← 上一頁</button>
+  <button onclick="nextSlide()">下一頁 →</button>
+</div>
+
+<script>
+let idx=0;
+const slides=[...document.querySelectorAll('.slide')];
+function show(i){
+  slides.forEach(s=>s.classList.remove('active'));
+  idx=(i+slides.length)%slides.length;
+  slides[idx].classList.add('active');
+}
+function nextSlide(){show(idx+1)}
+function prevSlide(){show(idx-1)}
+document.addEventListener('keydown',e=>{
+  if(['ArrowRight','PageDown',' '].includes(e.key)) nextSlide();
+  if(['ArrowLeft','PageUp'].includes(e.key)) prevSlide();
+});
+</script>
+</body>
+</html>
