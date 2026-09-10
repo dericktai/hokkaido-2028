@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>島狀反轉｜零基礎圖解</title>
+<style>
+:root{
+  --bg:#07111e;
+  --panel:#0f1d31;
+  --panel2:#132742;
+  --text:#f7fbff;
+  --muted:#9eb0c8;
+  --up:#3ddc97;
+  --down:#ff6b6b;
+  --accent:#70a5ff;
+  --yellow:#ffd166;
+  --line:#27435f;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Inter,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(circle at 15% 10%,rgba(112,165,255,.08),transparent 30%),
+    var(--bg);
+  line-height:1.5;
+}
+nav{
+  position:fixed;z-index:30;top:0;left:0;right:0;
+  display:flex;gap:8px;justify-content:center;
+  padding:10px 12px;background:rgba(7,17,30,.78);
+  backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.07);
+  overflow:auto;
+}
+nav a{
+  text-decoration:none;color:var(--muted);font-size:13px;
+  padding:7px 11px;border:1px solid rgba(255,255,255,.08);border-radius:999px;white-space:nowrap;
+}
+nav a:hover{color:#fff;border-color:var(--accent)}
+section{
+  min-height:100vh;padding:92px 7vw 56px;
+  display:flex;align-items:center;border-bottom:1px solid rgba(255,255,255,.06)
+}
+.wrap{width:min(1180px,100%);margin:auto}
+.grid2{display:grid;grid-template-columns:1.05fr .95fr;gap:28px;align-items:center}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+h1{font-size:clamp(42px,7vw,92px);line-height:1.02;margin:14px 0 18px}
+h2{font-size:clamp(30px,5vw,58px);line-height:1.08;margin:0 0 22px}
+.big{font-size:clamp(23px,3.2vw,44px);font-weight:950}
+.lead{font-size:clamp(18px,2vw,27px);color:var(--muted);max-width:920px}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  color:var(--accent);font-size:14px;font-weight:900;letter-spacing:.08em
+}
+.card{
+  background:linear-gradient(180deg,var(--panel2),var(--panel));
+  border:1px solid rgba(255,255,255,.08);border-radius:28px;padding:24px;
+  box-shadow:0 22px 60px rgba(0,0,0,.22)
+}
+.figure{
+  background:radial-gradient(circle at 50% 10%,#18375f 0,#0d192b 56%,#08111e 100%);
+  border:1px solid rgba(255,255,255,.08);border-radius:30px;padding:16px
+}
+.icon{
+  width:72px;height:72px;border-radius:22px;display:grid;place-items:center;
+  background:rgba(112,165,255,.13);font-size:38px;margin-bottom:14px
+}
+.pill{
+  display:inline-block;padding:11px 16px;border-radius:17px;
+  background:#162b49;border:1px solid rgba(255,255,255,.08);
+  font-weight:900
+}
+.arrowline{
+  display:flex;gap:12px;align-items:center;flex-wrap:wrap;
+  font-size:clamp(18px,2.6vw,34px);font-weight:900;margin-top:22px
+}
+.callout{
+  margin-top:24px;padding:22px;border-left:6px solid var(--yellow);
+  background:rgba(255,209,102,.08);border-radius:18px;
+  font-size:clamp(18px,2vw,26px);font-weight:850
+}
+.check{
+  display:grid;grid-template-columns:56px 1fr;gap:15px;align-items:center;
+  padding:16px 0;border-bottom:1px solid rgba(255,255,255,.08)
+}
+.num{
+  width:50px;height:50px;border-radius:16px;display:grid;place-items:center;
+  background:rgba(112,165,255,.14);color:var(--accent);font-size:23px;font-weight:950
+}
+.mini{font-size:15px;color:var(--muted)}
+.up{color:var(--up)} .down{color:var(--down)} .accent{color:var(--accent)} .yellow{color:var(--yellow)}
+svg{width:100%;height:auto;display:block}
+.footer{color:var(--muted);font-size:13px;margin-top:28px}
+.compare{
+  display:grid;grid-template-columns:1fr 1fr;gap:18px
+}
+.label{
+  display:inline-block;padding:7px 11px;border-radius:999px;font-size:13px;font-weight:900;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08)
+}
+@media(max-width:850px){
+  .grid2,.grid3,.compare{grid-template-columns:1fr}
+  nav{justify-content:flex-start}
+  section{padding-left:20px;padding-right:20px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#s1">① 是什麼</a>
+  <a href="#s2">② 島怎麼形成</a>
+  <a href="#s3">③ 底部反轉</a>
+  <a href="#s4">④ 頂部反轉</a>
+  <a href="#s5">⑤ 如何確認</a>
+  <a href="#s6">⑥ 三秒判斷</a>
+</nav>
+
+<section id="s1">
+  <div class="wrap">
+    <div class="grid2">
+      <div>
+        <div class="eyebrow">🏝️ 零基礎技術分析</div>
+        <h1>島狀反轉</h1>
+        <p class="lead">一小段 K 線，被「兩個跳空缺口」隔離，像海上的孤島。當第二個缺口往反方向跳開，常被視為趨勢可能反轉的訊號。</p>
+        <div class="arrowline">
+          <span class="pill">📈 原趨勢</span><span>→</span>
+          <span class="pill">🕳️ 跳空</span><span>→</span>
+          <span class="pill">🏝️ 孤島區</span><span>→</span>
+          <span class="pill yellow">🕳️ 反向跳空</span>
+        </div>
+      </div>
+
+      <div class="figure">
+        <svg viewBox="0 0 760 520" aria-label="島狀反轉基本結構">
+          <g stroke="#1b3555" stroke-width="1">
+            <path d="M55 90H710M55 170H710M55 250H710M55 330H710M55 410H710"/>
+            <path d="M120 40V460M240 40V460M360 40V460M480 40V460M600 40V460"/>
+          </g>
+
+          <polyline fill="none" stroke="#3ddc97" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"
+            points="65,370 125,335 185,300 245,260"/>
+          <polyline fill="none" stroke="#f7fbff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"
+            points="345,150 390,125 435,165 475,135"/>
+          <polyline fill="none" stroke="#ff6b6b" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"
+            points="575,280 625,315 685,355"/>
+
+          <rect x="267" y="205" width="58" height="108" rx="16" fill="rgba(255,209,102,.15)" stroke="#ffd166" stroke-width="3"/>
+          <rect x="496" y="190" width="58" height="114" rx="16" fill="rgba(255,209,102,.15)" stroke="#ffd166" stroke-width="3"/>
+
+          <ellipse cx="410" cy="145" rx="105" ry="70" fill="rgba(112,165,255,.10)" stroke="#70a5ff" stroke-width="4" stroke-dasharray="11 10"/>
+          <g font-family="sans-serif" font-weight="900">
+            <text x="330" y="62" fill="#70a5ff" font-size="28">🏝️ 孤島區</text>
+            <text x="267" y="340" fill="#ffd166" font-size="23">跳空缺口</text>
+            <text x="493" y="340" fill="#ffd166" font-size="23">反向缺口</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="s2">
+  <div class="wrap">
+    <div class="eyebrow">② 為什麼叫「島」</div>
+    <h2>關鍵不是 K 線，而是<span class="yellow">兩個缺口</span></h2>
+
+    <div class="grid3">
+      <div class="card">
+        <div class="icon">🕳️</div>
+        <div class="big">第一次跳空</div>
+        <p class="lead">價格突然跳到另一個區域，中間沒有成交。</p>
+      </div>
+      <div class="card">
+        <div class="icon">🏝️</div>
+        <div class="big">孤島停留</div>
+        <p class="lead">幾根 K 線在新區域震盪，看起來像孤島。</p>
+      </div>
+      <div class="card">
+        <div class="icon">↩️</div>
+        <div class="big">第二次反向跳空</div>
+        <p class="lead">價格突然跳回另一側，孤島被完整隔離。</p>
+      </div>
+    </div>
+
+    <div class="callout">🧠 最好記的畫面：<b>跳出去 → 在外面待幾天 → 反方向跳回來。</b></div>
+  </div>
+</section>
+
+<section id="s3">
+  <div class="wrap">
+    <div class="grid2">
+      <div>
+        <div class="eyebrow">③ 島狀「底部」反轉</div>
+        <h2>📉 跌很久 → 🏝️ 被丟在下面 → 🚀 向上跳回</h2>
+        <p class="lead">原本是下跌趨勢，先向下跳空形成孤島，再出現向上跳空。這種結構常被視為賣壓可能耗盡、趨勢轉強的訊號。</p>
+
+        <div class="arrowline">
+          <span class="pill down">📉 下跌</span><span>→</span>
+          <span class="pill">⬇️ 向下跳空</span><span>→</span>
+          <span class="pill">🏝️ 底部孤島</span><span>→</span>
+          <span class="pill up">⬆️ 向上跳空</span>
+        </div>
+      </div>
+
+      <div class="figure">
+        <svg viewBox="0 0 760 520">
+          <g stroke="#1b3555" stroke-width="1">
+            <path d="M55 90H710M55 170H710M55 250H710M55 330H710M55 410H710"/>
+          </g>
+
+          <polyline fill="none" stroke="#ff6b6b" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"
+            points="60,120 125,155 185,205 245,245"/>
+          <polyline fill="none" stroke="#f7fbff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"
+            points="335,360 385,390 435,365 475,395"/>
+          <polyline fill="none" stroke="#3ddc97" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"
+            points="565,255 620,210 690,145"/>
+
+          <ellipse cx="405" cy="378" rx="105" ry="65" fill="rgba(112,165,255,.10)" stroke="#70a5ff" stroke-width="4" stroke-dasharray="11 10"/>
+          <g font-family="sans-serif" font-weight="900">
+            <text x="330" y="465" fill="#70a5ff" font-size="27">🏝️ 底部孤島</text>
+            <text x="530" y="205" fill="#3ddc97" font-size="28">向上跳空 🚀</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="s4">
+  <div class="wrap">
+    <div class="grid2">
+      <div>
+        <div class="eyebrow">④ 島狀「頂部」反轉</div>
+        <h2>📈 漲很久 → 🏝️ 被丟在上面 → 📉 向下跳回</h2>
+        <p class="lead">原本是上漲趨勢，先向上跳空形成孤島，再向下跳空。這種結構常被視為追價力道可能突然轉弱。</p>
+
+        <div class="arrowline">
+          <span class="pill up">📈 上漲</span><span>→</span>
+          <span class="pill">⬆️ 向上跳空</span><span>→</span>
+          <span class="pill">🏝️ 頂部孤島</span><span>→</span>
+          <span class="pill down">⬇️ 向下跳空</span>
+        </div>
+      </div>
+
+      <div class="figure">
+        <svg viewBox="0 0 760 520">
+          <g stroke="#1b3555" stroke-width="1">
+            <path d="M55 90H710M55 170H710M55 250H710M55 330H710M55 410H710"/>
+          </g>
+
+          <polyline fill="none" stroke="#3ddc97" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"
+            points="60,390 125,345 185,300 245,250"/>
+          <polyline fill="none" stroke="#f7fbff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"
+            points="335,120 385,95 435,125 475,100"/>
+          <polyline fill="none" stroke="#ff6b6b" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"
+            points="565,250 620,300 690,360"/>
+
+          <ellipse cx="405" cy="112" rx="105" ry="65" fill="rgba(112,165,255,.10)" stroke="#70a5ff" stroke-width="4" stroke-dasharray="11 10"/>
+          <g font-family="sans-serif" font-weight="900">
+            <text x="325" y="55" fill="#70a5ff" font-size="27">🏝️ 頂部孤島</text>
+            <text x="525" y="230" fill="#ff6b6b" font-size="28">向下跳空 📉</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="s5">
+  <div class="wrap">
+    <div class="eyebrow">⑤ 怎樣才比較像真的</div>
+    <h2>不要只看到「跳空」就說是島狀反轉</h2>
+
+    <div class="compare">
+      <div class="card">
+        <span class="label up">✅ 比較完整</span>
+        <div class="check"><div class="num">1</div><div><b>前面已有明顯趨勢</b><div class="mini">先漲一段或先跌一段。</div></div></div>
+        <div class="check"><div class="num">2</div><div><b>有兩個方向相反的缺口</b><div class="mini">把中間 K 線真正隔成「島」。</div></div></div>
+        <div class="check"><div class="num">3</div><div><b>第二個缺口後價格續走</b><div class="mini">反轉方向有延續，比較有說服力。</div></div></div>
+        <div class="check"><div class="num">4</div><div><b>若量能放大，更值得注意</b><div class="mini">代表市場參與度提高。</div></div></div>
+      </div>
+
+      <div class="card">
+        <span class="label down">⚠️ 容易誤判</span>
+        <div class="check"><div class="num">×</div><div><b>只有單一缺口</b><div class="mini">那可能只是普通跳空。</div></div></div>
+        <div class="check"><div class="num">×</div><div><b>缺口很快被補掉</b><div class="mini">型態可能失效。</div></div></div>
+        <div class="check"><div class="num">×</div><div><b>原本沒有明顯趨勢</b><div class="mini">反轉的意義就比較弱。</div></div></div>
+        <div class="check"><div class="num">×</div><div><b>第二個缺口後沒有延續</b><div class="mini">要小心只是短線震盪。</div></div></div>
+      </div>
+    </div>
+
+    <div class="callout">📌 新手重點：<b>島狀反轉不是預測工具，而是「趨勢可能已經變了」的確認訊號之一。</b></div>
+  </div>
+</section>
+
+<section id="s6">
+  <div class="wrap">
+    <div class="eyebrow">⑥ 三秒鐘判斷法</div>
+    <h2>看到圖表，只問 3 題</h2>
+
+    <div class="grid3">
+      <div class="card">
+        <div class="icon">1️⃣</div>
+        <div class="big">前面有趨勢嗎？</div>
+        <p class="lead">沒有明顯漲跌，就很難叫「反轉」。</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">2️⃣</div>
+        <div class="big">有兩個缺口嗎？</div>
+        <p class="lead">中間 K 線必須像孤島一樣被隔離。</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">3️⃣</div>
+        <div class="big">第二個缺口反方向嗎？</div>
+        <p class="lead">這才是「反轉」的核心。</p>
+      </div>
+    </div>
+
+    <div style="height:28px"></div>
+    <div class="arrowline">
+      <span class="pill">趨勢</span><span>→</span>
+      <span class="pill">缺口</span><span>→</span>
+      <span class="pill">🏝️ 島</span><span>→</span>
+      <span class="pill yellow">反向缺口</span><span>→</span>
+      <span class="pill accent">確認延續</span>
+    </div>
+
+    <p class="footer">教育用途，不構成投資建議。技術型態不保證後續漲跌，實務上仍應搭配成交量、支撐壓力、整體趨勢與風險管理。</p>
+  </div>
+</section>
+
+</body>
+</html>
