@@ -2,247 +2,206 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="零基礎理解台股技術分析名詞：窒息量。用 K 線、成交量與情境圖解說明如何辨識與確認。">
-  <title>窒息量｜零基礎圖解</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="窒息量零基礎圖解：先量縮、後帶量長紅，才能回頭確認窒息量。">
+  <title>窒息量｜先別急著買，等長紅確認</title>
   <style>
     :root{
-      --ink:#182136;--muted:#667085;--paper:#f4f7fb;--card:#fff;
-      --red:#e34850;--red2:#ffebe9;--green:#159a72;--green2:#e5f7f1;
-      --blue:#3d6fe8;--blue2:#eaf0ff;--gold:#f2ad3d;--line:#dce4ef;
-      --shadow:0 18px 55px rgba(31,48,78,.10)
+      --ink:#172033;--muted:#697386;--paper:#f3f6fb;--card:#fff;
+      --red:#e53935;--red-soft:#fff0ef;--green:#11875d;--green-soft:#eaf8f2;
+      --blue:#3867d6;--blue-soft:#edf2ff;--gold:#f2a93b;--gold-soft:#fff7e7;
+      --line:#dce3ee;--shadow:0 18px 50px rgba(31,45,78,.10)
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;line-height:1.7}
-    a{color:inherit}
-    .hero{min-height:92vh;display:grid;place-items:center;padding:64px 22px;background:
-      radial-gradient(circle at 13% 18%,rgba(61,111,232,.15),transparent 32%),
-      radial-gradient(circle at 88% 76%,rgba(227,72,80,.12),transparent 34%),#fff}
-    .hero-inner{width:min(1140px,100%);display:grid;grid-template-columns:1fr 1.08fr;gap:54px;align-items:center}
-    .eyebrow{display:inline-flex;gap:8px;align-items:center;padding:7px 13px;border-radius:999px;background:var(--blue2);color:var(--blue);font-size:14px;font-weight:900;letter-spacing:.08em}
-    h1{font-size:clamp(54px,8vw,100px);line-height:.96;margin:26px 0 24px;letter-spacing:-.07em}
-    .lead{font-size:clamp(21px,2.4vw,30px);font-weight:800;line-height:1.45;margin:0 0 22px}
-    .lead b{color:var(--red)}
-    .mini{color:var(--muted);font-size:15px}
-    .lungs{position:relative;background:#f8fafc;border:1px solid var(--line);border-radius:34px;padding:26px;box-shadow:var(--shadow)}
-    .lungs svg{width:100%;height:auto;display:block}
-    .lungs-note{display:flex;justify-content:center;gap:18px;font-weight:900;font-size:14px;margin-top:8px;flex-wrap:wrap}
-    .dot{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:6px}
-    .down{background:var(--green)}.up{background:var(--red)}.vol{background:var(--blue)}
-    main{width:min(1120px,calc(100% - 32px));margin:auto}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;line-height:1.65}
+    .wrap{width:min(1120px,calc(100% - 32px));margin:auto}
+    .hero{min-height:92vh;display:grid;place-items:center;padding:56px 0;background:
+      radial-gradient(circle at 10% 12%,rgba(56,103,214,.18),transparent 30%),
+      radial-gradient(circle at 90% 24%,rgba(229,57,53,.15),transparent 27%),
+      linear-gradient(145deg,#f8fbff,#eef3fa)}
+    .hero-grid{display:grid;grid-template-columns:1fr 1.04fr;gap:44px;align-items:center}
+    .eyebrow{display:inline-flex;gap:8px;align-items:center;padding:8px 13px;border-radius:999px;background:var(--blue-soft);color:var(--blue);font-weight:900;font-size:.9rem}
+    h1{font-size:clamp(3rem,7vw,6.4rem);line-height:.92;margin:20px 0 22px;letter-spacing:-.07em}
+    h1 span{display:block;color:var(--red);font-size:.38em;letter-spacing:.02em;margin-top:18px}
+    .lead{font-size:clamp(1.15rem,2vw,1.45rem);max-width:620px;color:#3e4b62}
+    .hero-note{margin-top:26px;padding:18px 20px;background:#172033;color:white;border-radius:18px;font-weight:850;font-size:1.08rem}
+    .hero-note b{color:#ffd166}
+    .mini-chart{background:white;border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);padding:20px;overflow:hidden}
+    .mini-chart svg{display:block;width:100%;height:auto}
     section{padding:88px 0}
-    .section-head{text-align:center;max-width:780px;margin:0 auto 38px}
-    .num{font:900 15px/1 system-ui;color:var(--blue);letter-spacing:.18em;text-transform:uppercase}
-    h2{font-size:clamp(34px,5vw,58px);line-height:1.15;margin:15px 0 12px;letter-spacing:-.045em}
-    h3{font-size:25px;line-height:1.35;margin:12px 0}
-    .sub{color:var(--muted);font-size:18px;margin:0}
-    .big-answer{font-size:clamp(27px,4vw,46px);line-height:1.4;font-weight:900;text-align:center;background:#182136;color:white;padding:42px 30px;border-radius:30px;box-shadow:var(--shadow)}
-    .big-answer span{color:#80a4ff}.big-answer em{font-style:normal;color:#ff7880}
-    .flow{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}
-    .flow-card{background:var(--card);border:1px solid var(--line);border-radius:25px;padding:26px;text-align:center;position:relative}
-    .flow-card:not(:last-child)::after{content:"➜";position:absolute;right:-24px;top:44%;z-index:2;font-size:30px;color:#9aa8bb}
-    .icon{font-size:54px;line-height:1.1}.flow-card p{color:var(--muted);margin:8px 0 0}
-    .chart-card{background:var(--card);border:1px solid var(--line);border-radius:30px;padding:18px 18px 26px;box-shadow:var(--shadow)}
+    section:nth-child(even){background:white}
+    .section-title{text-align:center;margin:0 auto 44px;max-width:780px}
+    .section-title .num{display:inline-grid;place-items:center;width:46px;height:46px;border-radius:50%;background:#172033;color:white;font-weight:900}
+    h2{font-size:clamp(2rem,4vw,3.4rem);line-height:1.18;letter-spacing:-.045em;margin:16px 0 12px}
+    .section-title p{font-size:1.12rem;color:var(--muted);margin:0}
+    .big-rule{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px;max-width:880px;margin:0 auto}
+    .rule-card{min-height:230px;border-radius:26px;padding:28px;text-align:center;display:grid;place-items:center;border:1px solid var(--line);box-shadow:var(--shadow)}
+    .rule-card.soft{background:var(--gold-soft)}
+    .rule-card.go{background:var(--red-soft);border-color:#ffc9c6}
+    .rule-icon{font-size:4.4rem;line-height:1}
+    .rule-card h3{font-size:1.65rem;margin:12px 0 4px}
+    .rule-card p{margin:0;color:var(--muted)}
+    .arrow{font-size:2.6rem;color:var(--blue);font-weight:900}
+    .flow{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+    .step{position:relative;background:white;border:1px solid var(--line);border-radius:22px;padding:22px 16px;text-align:center;min-height:210px;box-shadow:0 10px 28px rgba(40,60,90,.07)}
+    .step:not(:last-child)::after{content:"→";position:absolute;right:-15px;top:47%;z-index:2;font-weight:1000;color:var(--blue);font-size:1.5rem}
+    .step .icon{font-size:3.2rem}
+    .step .badge{display:inline-block;margin-top:10px;padding:4px 9px;border-radius:999px;font-size:.78rem;font-weight:900;background:var(--blue-soft);color:var(--blue)}
+    .step h3{font-size:1.18rem;margin:8px 0 4px}
+    .step p{font-size:.93rem;color:var(--muted);margin:0}
+    .chart-card{background:#fff;border:1px solid var(--line);border-radius:28px;padding:20px;box-shadow:var(--shadow)}
     .chart-card svg{width:100%;height:auto;display:block}
-    .legend{display:flex;gap:20px;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:12px;color:var(--muted);font-size:14px;font-weight:800}
-    .pill{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);padding:6px 11px;border-radius:999px;background:#fff}
-    .cards2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-    .scene{background:#fff;border:1px solid var(--line);border-radius:28px;padding:28px;overflow:hidden}
-    .scene.good{border-top:8px solid var(--red)}.scene.bad{border-top:8px solid var(--green)}
-    .scene .visual{height:170px;display:flex;align-items:flex-end;justify-content:center;gap:8px;padding:20px 10px;background:#f8fafc;border-radius:20px;margin:18px 0}
-    .bar{width:30px;background:var(--blue);border-radius:7px 7px 2px 2px;opacity:.86}
-    .scene p{color:var(--muted);margin:5px 0}
-    .result{font-weight:900;font-size:21px;margin-top:14px!important;color:var(--ink)!important}
-    .check-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-    .check{background:#fff;border-radius:24px;border:1px solid var(--line);padding:24px 19px;text-align:center}
-    .check .icon{font-size:44px}.check b{font-size:19px;display:block}.check small{color:var(--muted);font-size:14px}
-    .traffic{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .signal{border-radius:26px;padding:27px;background:#fff;border:1px solid var(--line)}
-    .signal .light{width:54px;height:54px;border-radius:50%;box-shadow:inset 0 0 0 7px rgba(255,255,255,.55);margin-bottom:17px}
-    .signal.red .light{background:#e34850}.signal.yellow .light{background:#f2ad3d}.signal.green .light{background:#159a72}
-    .signal ul{padding-left:20px;margin-bottom:0;color:var(--muted)}
-    .rule{background:linear-gradient(135deg,#eaf0ff,#fff);border:1px solid #cad7f7;border-radius:30px;padding:38px;display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:center}
-    .rule .icon{font-size:74px}.rule strong{display:block;font-size:clamp(25px,3vw,39px);line-height:1.35}
-    details{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px 20px;margin-top:32px}
-    summary{font-weight:900;cursor:pointer}
-    pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#111827;color:#d6e4ff;padding:22px;border-radius:14px;line-height:1.55;font-size:13px;overflow:auto}
-    .disclaimer{font-size:14px;color:var(--muted);border-left:4px solid var(--gold);padding:3px 0 3px 15px;margin-top:28px}
-    footer{text-align:center;color:var(--muted);padding:36px 20px 55px;font-size:14px}
-    .reveal{opacity:0;transform:translateY(18px);transition:.65s ease}.reveal.show{opacity:1;transform:none}
-    @media(max-width:850px){.hero-inner,.cards2{grid-template-columns:1fr}.hero{text-align:center}.lungs{max-width:650px;margin:auto}.flow,.traffic{grid-template-columns:1fr}.flow-card:not(:last-child)::after{content:"▼";right:auto;left:calc(50% - 13px);top:auto;bottom:-29px}.check-grid{grid-template-columns:1fr 1fr}.rule{grid-template-columns:1fr;text-align:center}}
-    @media(max-width:520px){section{padding:64px 0}.check-grid{grid-template-columns:1fr}.chart-card{padding:8px}.hero{padding-top:45px}.lungs{padding:10px}.rule{padding:28px}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}}
+    .chart-caption{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:18px}
+    .pill{padding:9px 13px;border-radius:999px;background:#f4f6fa;font-weight:850;font-size:.92rem}
+    .pill.red{background:var(--red-soft);color:#b92724}.pill.green{background:var(--green-soft);color:#096b49}.pill.blue{background:var(--blue-soft);color:#2751b1}
+    .branch{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    .branch-card{border-radius:26px;padding:30px;border:2px solid var(--line);background:#fff}
+    .branch-card.yes{border-color:#95dfc2;background:linear-gradient(145deg,#fff,#effbf6)}
+    .branch-card.no{border-color:#ffc6c3;background:linear-gradient(145deg,#fff,#fff1f0)}
+    .branch-card .top{display:flex;align-items:center;gap:14px}.branch-card .top span{font-size:3rem}
+    .branch-card h3{font-size:1.5rem;margin:0}.branch-card ul{padding-left:1.3em;color:#47546b}.branch-card strong{color:var(--ink)}
+    .formula{max-width:900px;margin:28px auto 0;padding:24px;border-radius:22px;background:#172033;color:white;text-align:center;font-size:clamp(1.15rem,2vw,1.45rem);font-weight:900}
+    .formula span{color:#ffd166}
+    .lights{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .light{background:white;border-radius:24px;padding:24px;border:1px solid var(--line);box-shadow:0 10px 28px rgba(40,60,90,.07)}
+    .light-dot{width:58px;height:58px;border-radius:50%;margin-bottom:16px;box-shadow:inset 0 -5px 12px rgba(0,0,0,.18)}
+    .light.yellow .light-dot{background:#ffbd2e}.light.green .light-dot{background:#20ba78}.light.red .light-dot{background:#ef4b47}
+    .light h3{font-size:1.35rem;margin:0 0 8px}.light p{color:var(--muted);margin:0}
+    .warning{display:flex;gap:18px;align-items:flex-start;max-width:900px;margin:30px auto 0;background:var(--gold-soft);border:1px solid #f7d493;border-radius:20px;padding:20px 22px}.warning .icon{font-size:2rem}.warning p{margin:0;color:#57451f}
+    footer{text-align:center;padding:42px 20px;color:var(--muted);font-size:.9rem}
+    @media(max-width:820px){.hero-grid{grid-template-columns:1fr}.hero{min-height:auto}.flow{grid-template-columns:1fr 1fr}.step:not(:last-child)::after{display:none}.big-rule{grid-template-columns:1fr}.arrow{transform:rotate(90deg)}.lights{grid-template-columns:1fr}.branch{grid-template-columns:1fr}}
+    @media(max-width:520px){.flow{grid-template-columns:1fr}section{padding:64px 0}.chart-card{padding:8px}.rule-card{min-height:190px}}
   </style>
 </head>
 <body>
   <header class="hero">
-    <div class="hero-inner">
+    <div class="wrap hero-grid">
       <div>
-        <span class="eyebrow">📊 台股技術分析・零基礎</span>
-        <h1>窒息量</h1>
-        <p class="lead">不是股價不能呼吸，<br>是市場的<b>交易量快沒氣了</b>。</p>
-        <p class="mini">價格還在動，但願意買賣的人突然變得非常少。</p>
+        <div class="eyebrow">📘 台股技術分析・零基礎</div>
+        <h1>窒息量<span>不是「量很小」就算</span></h1>
+        <p class="lead">它是股價上漲後，在盤整／回檔換手時出現的極低量；而且要等隔日出現<strong>第一根帶量長紅 K</strong>，才回頭確認。</p>
+        <div class="hero-note">一句話：<b>先量縮，後長紅；確認後，才叫窒息量。</b></div>
       </div>
-      <div class="lungs" aria-label="成交量由高到低縮小的示意圖">
-        <svg viewBox="0 0 600 450" role="img">
-          <defs><linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#557fe7"/><stop offset="1" stop-color="#a9bdf2"/></linearGradient></defs>
-          <rect width="600" height="450" rx="28" fill="#f8fafc"/>
-          <path d="M65 100H555M65 190H555M65 280H555" stroke="#dce4ef" stroke-dasharray="6 8"/>
-          <path d="M78 95 L124 126 L170 105 L216 174 L262 154 L308 216 L354 203 L400 244 L446 232 L492 260 L540 254" fill="none" stroke="#159a72" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-          <g fill="url(#fade)">
-            <rect x="70" y="303" width="30" height="104" rx="5"/><rect x="116" y="320" width="30" height="87" rx="5"/><rect x="162" y="312" width="30" height="95" rx="5"/>
-            <rect x="208" y="337" width="30" height="70" rx="5"/><rect x="254" y="347" width="30" height="60" rx="5"/><rect x="300" y="359" width="30" height="48" rx="5"/>
-            <rect x="346" y="368" width="30" height="39" rx="5"/><rect x="392" y="375" width="30" height="32" rx="5"/><rect x="438" y="382" width="30" height="25" rx="5"/>
-            <rect x="484" y="387" width="30" height="20" rx="5"/><rect x="530" y="391" width="30" height="16" rx="5"/>
+      <div class="mini-chart" aria-label="窒息量簡化示意圖">
+        <svg viewBox="0 0 620 470" role="img">
+          <defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#3867d6"/></marker></defs>
+          <rect width="620" height="470" rx="20" fill="#fbfcff"/>
+          <g stroke="#e7ebf2" stroke-width="1"><path d="M40 80H590M40 150H590M40 220H590M40 290H590M40 365H590M40 430H590"/></g>
+          <path d="M60 270L105 250L150 225L195 170L235 125L275 155L315 205L350 230L385 215L420 140L460 95L510 68L565 48" fill="none" stroke="#92a0b6" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+          <g stroke-width="3">
+            <path d="M338 192V247" stroke="#11875d"/><rect x="329" y="202" width="18" height="29" fill="#11875d"/>
+            <path d="M366 198V234" stroke="#11875d"/><rect x="357" y="207" width="18" height="17" fill="#11875d"/>
+            <path d="M394 187V227" stroke="#e53935"/><rect x="385" y="196" width="18" height="21" fill="#e53935"/>
+            <path d="M423 104V217" stroke="#e53935"/><rect x="412" y="130" width="22" height="70" fill="#e53935"/>
+            <path d="M458 74V142" stroke="#e53935"/><rect x="448" y="89" width="20" height="40" fill="#e53935"/>
+            <path d="M492 57V103" stroke="#e53935"/><rect x="482" y="68" width="20" height="26" fill="#e53935"/>
           </g>
-          <path d="M98 290 C180 275 410 283 545 355" fill="none" stroke="#e34850" stroke-width="5" stroke-dasharray="10 10"/>
-          <text x="365" y="327" fill="#e34850" font-size="21" font-weight="900">成交量一路縮小</text>
-          <text x="432" y="88" fill="#182136" font-size="19" font-weight="900">人氣 ↓</text>
+          <g fill="#8db2d6"><rect x="326" y="384" width="18" height="35" rx="2"/><rect x="354" y="394" width="18" height="25" rx="2"/><rect x="382" y="407" width="18" height="12" rx="2"/><rect x="414" y="332" width="22" height="87" rx="2"/><rect x="448" y="360" width="20" height="59" rx="2"/><rect x="482" y="342" width="20" height="77" rx="2"/></g>
+          <circle cx="391" cy="407" r="15" fill="#ffd166" stroke="#172033" stroke-width="3"/>
+          <path d="M310 332C330 360 352 382 379 399" fill="none" stroke="#3867d6" stroke-width="3" marker-end="url(#arr)"/>
+          <text x="160" y="325" font-size="22" font-weight="900" fill="#3867d6">成交量縮到很低</text>
+          <path d="M475 250C462 225 448 211 429 203" fill="none" stroke="#3867d6" stroke-width="3" marker-end="url(#arr)"/>
+          <text x="455" y="280" text-anchor="middle" font-size="21" font-weight="900" fill="#e53935">隔日帶量長紅</text>
+          <text x="40" y="35" font-size="18" font-weight="900" fill="#172033">價格</text><text x="40" y="345" font-size="18" font-weight="900" fill="#172033">成交量</text>
         </svg>
-        <div class="lungs-note"><span><i class="dot down"></i>股價走弱</span><span><i class="dot vol"></i>量能枯竭</span></div>
       </div>
     </div>
   </header>
 
   <main>
-    <section class="reveal">
-      <div class="section-head"><div class="num">01 · 一句話</div><h2>「想賣的人，快賣完了？」</h2><p class="sub">注意問號：它是線索，不是答案。</p></div>
-      <div class="big-answer">下跌途中，成交量縮到近期極低，市場像是<span>缺氧</span>。<br>可能代表<em>賣壓變少</em>，也可能只是買盤不見。</div>
-      <div class="flow">
-        <article class="flow-card"><div class="icon">📉</div><h3>股價走弱</h3><p>市場先經歷下跌或整理</p></article>
-        <article class="flow-card"><div class="icon">🔉</div><h3>成交量越縮越小</h3><p>多空雙方逐漸不想出手</p></article>
-        <article class="flow-card"><div class="icon">❓</div><h3>等待方向</h3><p>接下來放量向上或向下才重要</p></article>
+    <section>
+      <div class="wrap">
+        <div class="section-title"><span class="num">1</span><h2>先搞懂：股票正在「換手」</h2><p>前一波賺錢的人想下車，新的人正在接股票。</p></div>
+        <div class="big-rule">
+          <article class="rule-card soft"><div><div class="rule-icon">🤲</div><h3>一般投資人接走</h3><p>可能只是主力把籌碼倒給市場<br><strong>換手失敗＝偏向出貨</strong></p></div></article>
+          <div class="arrow">⇄</div>
+          <article class="rule-card go"><div><div class="rule-icon">🐋</div><h3>有力的大戶承接</h3><p>籌碼重新集中、浮額減少<br><strong>換手成功＝有利續攻</strong></p></div></article>
+        </div>
+        <div class="warning"><div class="icon">💡</div><p><strong>光看成交量，無法直接知道誰在接。</strong>「窒息量＋隔日帶量長紅」是用價格與量能結果，間接觀察換手是否可能成功。</p></div>
       </div>
     </section>
 
-    <section class="reveal">
-      <div class="section-head"><div class="num">02 · 看懂 K 線圖</div><h2>上面看價格，下面看「呼吸」</h2><p class="sub">本圖依窒息量的典型結構重繪；台股用紅漲、綠跌。</p></div>
-      <div class="chart-card">
-        <svg viewBox="0 0 1040 620" role="img" aria-label="下跌後成交量逐漸萎縮，接著放量上漲的 K 線示意圖">
-          <rect x="20" y="20" width="1000" height="580" rx="25" fill="#fbfcfe"/>
-          <g stroke="#e2e8f0" stroke-width="1"><path d="M80 100H970M80 190H970M80 280H970M80 370H970M80 450H970M80 540H970"/><path d="M180 70V555M330 70V555M480 70V555M630 70V555M780 70V555M930 70V555"/></g>
-          <rect x="485" y="70" width="305" height="485" rx="18" fill="#fff4d8" opacity=".72"/>
-          <text x="515" y="106" fill="#94670c" font-size="22" font-weight="900">😶 窒息區：價格跌不太動，量也快沒了</text>
-          <g stroke-width="4">
-            <g stroke="#159a72" fill="#159a72"><path d="M120 112V215"/><rect x="106" y="137" width="28" height="52" rx="2"/><path d="M175 142V246"/><rect x="161" y="164" width="28" height="58" rx="2"/><path d="M230 174V286"/><rect x="216" y="196" width="28" height="67" rx="2"/><path d="M285 210V314"/><rect x="271" y="232" width="28" height="58" rx="2"/><path d="M340 245V343"/><rect x="326" y="266" width="28" height="51" rx="2"/><path d="M395 276V363"/><rect x="381" y="299" width="28" height="42" rx="2"/></g>
-            <g stroke="#e34850" fill="#e34850"><path d="M450 294V367"/><rect x="436" y="316" width="28" height="29" rx="2"/></g>
-            <g stroke="#159a72" fill="#159a72"><path d="M505 309V374"/><rect x="491" y="329" width="28" height="26" rx="2"/></g>
-            <g stroke="#e34850" fill="#e34850"><path d="M560 310V365"/><rect x="546" y="330" width="28" height="19" rx="2"/></g>
-            <g stroke="#159a72" fill="#159a72"><path d="M615 323V378"/><rect x="601" y="339" width="28" height="21" rx="2"/></g>
-            <g stroke="#e34850" fill="#e34850"><path d="M670 317V367"/><rect x="656" y="333" width="28" height="18" rx="2"/></g>
-            <g stroke="#159a72" fill="#159a72"><path d="M725 328V376"/><rect x="711" y="342" width="28" height="15" rx="2"/></g>
-            <g stroke="#e34850" fill="#e34850"><path d="M780 305V360"/><rect x="766" y="318" width="28" height="27" rx="2"/></g>
-            <g stroke="#e34850" fill="#e34850"><path d="M835 245V335"/><rect x="821" y="270" width="28" height="53" rx="2"/><path d="M890 196V288"/><rect x="876" y="215" width="28" height="57" rx="2"/><path d="M945 155V235"/><rect x="931" y="174" width="28" height="45" rx="2"/></g>
-          </g>
-          <path d="M835 326L835 420" stroke="#e34850" stroke-width="4"/><path d="M820 405L835 423L850 405" fill="none" stroke="#e34850" stroke-width="4"/>
-          <text x="803" y="390" fill="#e34850" font-size="20" font-weight="900">放量上攻</text>
-          <line x1="80" x2="970" y1="405" y2="405" stroke="#aab6c7" stroke-width="2"/>
-          <g fill="#6c8ee6">
-            <rect x="105" y="435" width="30" height="107" rx="4"/><rect x="160" y="449" width="30" height="93" rx="4"/><rect x="215" y="462" width="30" height="80" rx="4"/><rect x="270" y="473" width="30" height="69" rx="4"/><rect x="325" y="484" width="30" height="58" rx="4"/><rect x="380" y="492" width="30" height="50" rx="4"/><rect x="435" y="501" width="30" height="41" rx="4"/><rect x="490" y="510" width="30" height="32" rx="4"/><rect x="545" y="516" width="30" height="26" rx="4"/><rect x="600" y="521" width="30" height="21" rx="4"/><rect x="655" y="524" width="30" height="18" rx="4"/><rect x="710" y="527" width="30" height="15" rx="4"/><rect x="765" y="525" width="30" height="17" rx="4"/>
-            <rect x="820" y="452" width="30" height="90" rx="4" fill="#e34850"/><rect x="875" y="430" width="30" height="112" rx="4" fill="#e34850"/><rect x="930" y="441" width="30" height="101" rx="4" fill="#e34850"/>
-          </g>
-          <path d="M105 421 C270 440 470 480 782 512" fill="none" stroke="#3d6fe8" stroke-width="5" stroke-dasharray="10 9"/>
-          <text x="470" y="475" fill="#3d6fe8" font-size="20" font-weight="900">量能像被關小的水龍頭 🚰</text>
-          <g font-size="15" fill="#667085" font-weight="800"><text x="31" y="91">價格</text><text x="31" y="441">成交量</text><text x="92" y="574">賣壓釋放</text><text x="492" y="574">窒息量</text><text x="826" y="574">方向確認</text></g>
-        </svg>
-        <div class="legend"><span class="pill"><i class="dot up"></i>紅 K＝上漲</span><span class="pill"><i class="dot down"></i>綠 K＝下跌</span><span class="pill"><i class="dot vol"></i>柱狀＝成交量</span></div>
+    <section>
+      <div class="wrap">
+        <div class="section-title"><span class="num">2</span><h2>窒息量的完整五步驟</h2><p>少任何一步，都不要急著把它當成買進訊號。</p></div>
+        <div class="flow">
+          <article class="step"><div class="icon">🚀</div><span class="badge">① 前提</span><h3>先有一波上漲</h3><p>沒有前波行情，就沒有「獲利籌碼換手」。</p></article>
+          <article class="step"><div class="icon">↔️</div><span class="badge">② 整理</span><h3>盤整或回檔</h3><p>股價不一定大跌，也可能只是高檔震盪。</p></article>
+          <article class="step"><div class="icon">🔉</div><span class="badge">③ 候選</span><h3>成交量持續縮</h3><p>市場買賣降溫，籌碼逐漸沉澱。</p></article>
+          <article class="step"><div class="icon">🤫</div><span class="badge">④ 最低量</span><h3>量縮到極低</h3><p>此時只能稱為「窒息量候選日」。</p></article>
+          <article class="step"><div class="icon">🧨</div><span class="badge">⑤ 確認</span><h3>隔日帶量長紅</h3><p>價格轉強、成交量明顯高於前一天。</p></article>
+        </div>
+        <div class="formula">真正判讀：<span>窒息量候選日</span> ＋ 隔日<span>第一根帶量長紅 K</span> ＝ 回頭確認</div>
       </div>
     </section>
 
-    <section class="reveal">
-      <div class="section-head"><div class="num">03 · 關鍵分岔</div><h2>量很小，不等於一定會漲</h2><p class="sub">同樣是「沒成交」，背後可能是兩齣不同的戲。</p></div>
-      <div class="cards2">
-        <article class="scene good">
-          <div class="icon">🧻➡️✨</div><h3>情境 A｜浮額被洗乾淨</h3><p>想賣的人逐漸賣完，股價也不再破底。</p>
-          <div class="visual"><i class="bar" style="height:125px"></i><i class="bar" style="height:95px"></i><i class="bar" style="height:70px"></i><i class="bar" style="height:48px"></i><i class="bar" style="height:26px"></i><i class="bar" style="height:15px"></i><i class="bar" style="height:100px;background:var(--red)"></i></div>
-          <p class="result">後續放量上漲 → 偏多確認 ✅</p>
-        </article>
-        <article class="scene bad">
-          <div class="icon">🏜️➡️🕳️</div><h3>情境 B｜根本沒人想買</h3><p>賣壓雖小，但承接也弱，股價持續陰跌。</p>
-          <div class="visual"><i class="bar" style="height:100px"></i><i class="bar" style="height:72px"></i><i class="bar" style="height:50px"></i><i class="bar" style="height:29px"></i><i class="bar" style="height:18px"></i><i class="bar" style="height:15px"></i><i class="bar" style="height:112px;background:var(--green)"></i></div>
-          <p class="result">後續放量跌破 → 轉弱確認 ⚠️</p>
-        </article>
+    <section>
+      <div class="wrap">
+        <div class="section-title"><span class="num">3</span><h2>圖 1：歐買尬案例怎麼看？</h2><p>依原圖的資訊架構重新繪製，重點是判讀順序，不是精確復刻歷史價格。</p></div>
+        <div class="chart-card">
+          <svg viewBox="0 0 1100 650" role="img" aria-label="圖一窒息量結構重繪">
+            <defs><marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#172033"/></marker><linearGradient id="zone" x1="0" x2="1"><stop offset="0" stop-color="#fff4df"/><stop offset="1" stop-color="#fff"/></linearGradient></defs>
+            <rect width="1100" height="650" rx="22" fill="#fff"/>
+            <g stroke="#e8ecf2"><path d="M70 100H1040M70 180H1040M70 260H1040M70 340H1040M70 470H1040M70 570H1040"/></g>
+            <rect x="625" y="78" width="240" height="500" rx="12" fill="url(#zone)" stroke="#f2c46f" stroke-width="2" stroke-dasharray="8 8"/>
+            <text x="745" y="112" text-anchor="middle" font-size="22" font-weight="900" fill="#9a6512">盤整／回檔換手區</text>
+            <path d="M80 324C260 332 390 318 520 305C600 295 635 257 670 190C700 125 740 147 770 203C800 258 825 286 855 225C885 164 905 100 1020 70" fill="none" stroke="#9aa7ba" stroke-width="5" stroke-linecap="round"/>
+            <path d="M80 350C390 351 600 348 1010 280" fill="none" stroke="#6f8fda" stroke-width="3" opacity=".75"/>
+            <g stroke-width="3">
+              <path d="M640 226V318" stroke="#e53935"/><rect x="630" y="250" width="20" height="46" fill="#e53935"/>
+              <path d="M670 155V263" stroke="#e53935"/><rect x="660" y="180" width="20" height="60" fill="#e53935"/>
+              <path d="M700 125V196" stroke="#e53935"/><rect x="690" y="142" width="20" height="35" fill="#e53935"/>
+              <path d="M730 142V205" stroke="#11875d"/><rect x="720" y="153" width="20" height="38" fill="#11875d"/>
+              <path d="M760 169V235" stroke="#11875d"/><rect x="750" y="182" width="20" height="39" fill="#11875d"/>
+              <path d="M790 210V280" stroke="#11875d"/><rect x="780" y="224" width="20" height="42" fill="#11875d"/>
+              <path d="M820 240V296" stroke="#e53935"/><rect x="810" y="257" width="20" height="25" fill="#e53935"/>
+              <path d="M850 218V277" stroke="#e53935"/><rect x="840" y="229" width="20" height="32" fill="#e53935"/>
+              <path d="M886 126V243" stroke="#e53935"/><rect x="874" y="153" width="24" height="70" fill="#e53935"/>
+              <path d="M920 92V168" stroke="#e53935"/><rect x="910" y="110" width="20" height="43" fill="#e53935"/>
+              <path d="M954 70V126" stroke="#e53935"/><rect x="944" y="84" width="20" height="31" fill="#e53935"/>
+              <path d="M988 54V100" stroke="#e53935"/><rect x="978" y="66" width="20" height="24" fill="#e53935"/>
+            </g>
+            <g fill="#86afd3"><rect x="622" y="468" width="20" height="102"/><rect x="652" y="418" width="20" height="152"/><rect x="682" y="450" width="20" height="120"/><rect x="712" y="493" width="20" height="77"/><rect x="742" y="514" width="20" height="56"/><rect x="772" y="528" width="20" height="42"/><rect x="802" y="539" width="20" height="31"/><rect x="832" y="548" width="20" height="22"/><rect x="874" y="455" width="24" height="115"/><rect x="910" y="486" width="20" height="84"/><rect x="944" y="430" width="20" height="140"/><rect x="978" y="474" width="20" height="96"/></g>
+            <circle cx="842" cy="548" r="17" fill="#ffd166" stroke="#172033" stroke-width="3"/>
+            <path d="M760 360C786 389 814 440 837 523" fill="none" stroke="#172033" stroke-width="3" marker-end="url(#a2)"/>
+            <text x="690" y="345" font-size="25" font-weight="900" fill="#172033">① 量能持續縮減</text>
+            <path d="M910 280C905 248 898 228 892 218" fill="none" stroke="#172033" stroke-width="3" marker-end="url(#a2)"/>
+            <text x="925" y="312" text-anchor="middle" font-size="24" font-weight="900" fill="#e53935">② 第一根帶量長紅 K</text>
+            <path d="M842 620V578" fill="none" stroke="#172033" stroke-width="3" marker-end="url(#a2)"/>
+            <text x="842" y="640" text-anchor="middle" font-size="23" font-weight="900" fill="#172033">③ 前一天才被確認為窒息量</text>
+            <text x="82" y="52" font-size="30" font-weight="1000" fill="#172033">圖 1 結構重繪｜窒息量是「事後確認」</text>
+            <text x="72" y="395" font-size="18" font-weight="900" fill="#697386">成交量</text>
+          </svg>
+          <div class="chart-caption"><span class="pill blue">① 盤整中量縮</span><span class="pill red">② 隔日長紅＋明顯放量</span><span class="pill green">③ 回頭確認前一天</span></div>
+        </div>
       </div>
     </section>
 
-    <section class="reveal">
-      <div class="section-head"><div class="num">04 · 四步確認</div><h2>先看「窒息」，再等「恢復呼吸」</h2><p class="sub">只看到量縮，最多只能加入觀察名單。</p></div>
-      <div class="check-grid">
-        <div class="check"><div class="icon">1️⃣ 📉</div><b>先有跌勢</b><small>下跌或拉回後才有脈絡</small></div>
-        <div class="check"><div class="icon">2️⃣ 🤏</div><b>量縮到近期低</b><small>和自己近期均量比較</small></div>
-        <div class="check"><div class="icon">3️⃣ 🧱</div><b>價格不再破底</b><small>低點守住，比小量更重要</small></div>
-        <div class="check"><div class="icon">4️⃣ 🚀</div><b>上漲帶量</b><small>突破壓力，方向才獲確認</small></div>
+    <section>
+      <div class="wrap">
+        <div class="section-title"><span class="num">4</span><h2>同樣量縮，結果可能完全不同</h2><p>「量縮」只是現象；後續價格是否轉強，才是關鍵。</p></div>
+        <div class="branch">
+          <article class="branch-card yes"><div class="top"><span>✅</span><h3>可能是換手成功</h3></div><ul><li>前面已有一波上漲</li><li>整理時量能逐步萎縮</li><li><strong>隔日出現第一根長紅 K</strong></li><li><strong>當日量明顯高於前一天</strong></li></ul></article>
+          <article class="branch-card no"><div class="top"><span>⚠️</span><h3>也可能只是沒人買</h3></div><ul><li>股價持續陰跌、沒有止穩</li><li>量小但沒有買盤重新進場</li><li>沒有長紅，也沒有突破</li><li><strong>只能繼續等待，不能先認定</strong></li></ul></article>
+        </div>
       </div>
     </section>
 
-    <section class="reveal">
-      <div class="section-head"><div class="num">05 · 新手燈號</div><h2>看到窒息量，該做什麼？</h2></div>
-      <div class="traffic">
-        <article class="signal red"><div class="light"></div><h3>🔴 不要直接買</h3><ul><li>量縮不是底部保證</li><li>陰跌也常常沒有量</li></ul></article>
-        <article class="signal yellow"><div class="light"></div><h3>🟡 放進觀察</h3><ul><li>畫出近期低點與壓力</li><li>觀察量能是否重新放大</li></ul></article>
-        <article class="signal green"><div class="light"></div><h3>🟢 等確認再判斷</h3><ul><li>不破低＋紅 K</li><li>放量突破近期壓力</li></ul></article>
+    <section>
+      <div class="wrap">
+        <div class="section-title"><span class="num">5</span><h2>新手三色燈判斷法</h2><p>用等待與確認，避開把任何地量都當成買點。</p></div>
+        <div class="lights">
+          <article class="light yellow"><div class="light-dot"></div><h3>黃燈｜先觀察</h3><p>股價盤整、成交量極低。這時只有「候選」，不要搶著命名。</p></article>
+          <article class="light green"><div class="light-dot"></div><h3>綠燈｜確認轉強</h3><p>隔日第一根長紅 K，且成交量大幅超過前一天，窒息量才成立。</p></article>
+          <article class="light red"><div class="light-dot"></div><h3>紅燈｜型態失敗</h3><p>跌破整理低點、持續無量陰跌，或放量卻收黑，都不是理想訊號。</p></article>
+        </div>
+        <div class="warning"><div class="icon">🛡️</div><p><strong>窒息量不是保證上漲。</strong>它只是觀察籌碼沉澱與買盤重新回來的一種價量線索。實際交易仍要搭配整理區低點、壓力突破、整體趨勢與停損規劃。</p></div>
       </div>
     </section>
 
-    <section class="reveal">
-      <div class="rule"><div class="icon">🧠</div><div><strong>記憶口訣：<br>「量縮」只是安靜，<br>「價穩＋放量上攻」才像甦醒。</strong><p class="sub">單看一天的小量沒有意義；要和該股票自己的近期成交量、價位及趨勢一起比較。</p></div></div>
-      <details>
-        <summary>查看本頁繪圖前使用的 YAML 拆解</summary>
-        <pre>reference:
-  requested_url: "https://www.cmoney.tw/notes/note-detail.aspx?nid=177356"
-  verification_date: "2026-09-10"
-  public_page_status: "目前導向元大期(6023)文章，非窒息量教學"
-  image_policy: "不複製原圖；依窒息量典型價量結構自行重繪"
-
-visual_model:
-  market_convention:
-    rise: "red"
-    fall: "green"
-  panels:
-    - name: "price"
-      sequence:
-        - "price declines"
-        - "decline slows"
-        - "base stops making new lows"
-        - "confirmation candle rises"
-    - name: "volume"
-      sequence:
-        - "selling volume releases"
-        - "volume contracts progressively"
-        - "very low relative volume = suffocation zone"
-        - "volume expands on confirmation"
-  semantic_zones:
-    before: "selling pressure"
-    center: "low participation / wait"
-    after_up: "demand returns"
-    after_down: "bearish breakdown"
-
-teaching_logic:
-  definition: "極度量縮的市場俗稱，沒有全市場一致的固定門檻"
-  bullish_hypothesis: "賣方籌碼可能接近耗盡"
-  bearish_alternative: "買方也可能完全缺席"
-  confirmation:
-    - "price does not make a new low"
-    - "bullish candle or reversal structure"
-    - "breaks nearby resistance"
-    - "volume expands with the rise"
-  invalidation:
-    - "price breaks the recent low"
-    - "volume expands on a decline"
-
-risk_note:
-  - "窒息量不是正式、標準化的單一技術指標"
-  - "不存在適用所有股票的固定張數或百分比"
-  - "不得單獨作為買賣依據"</pre>
-      </details>
-      <p class="disclaimer">資料說明：指定 CMoney 網址於查核時呈現其他主題，故本頁沒有宣稱重現該文原圖，而是依「窒息量」的一般價量概念製作教學示意。技術分析只能描述機率與市場行為，不保證未來漲跌；內容僅供學習，不構成投資建議。</p>
-    </section>
   </main>
-  <footer>窒息量・零基礎圖解｜製作日期 2026-09-10</footer>
-  <script>
-    const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.13});
-    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-  </script>
+
+  <footer>窒息量・零基礎圖解 v2｜圖表為教學重繪，不構成投資建議</footer>
 </body>
 </html>
