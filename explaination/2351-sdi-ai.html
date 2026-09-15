@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>順德 2351｜從超級小刀到 AI 伺服器：產品結構與投資機會圖解</title>
+<style>
+  :root{
+    --bg:#07111f; --panel:#0e1b2d; --panel2:#12233a; --text:#eef6ff; --muted:#9fb3c8;
+    --blue:#52a7ff; --cyan:#45e0d0; --green:#82e38c; --yellow:#ffd166; --orange:#ff9f5a;
+    --red:#ff6b6b; --purple:#ae8cff; --line:#27415f; --white:#fff;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:linear-gradient(180deg,#06101c 0%,#081727 45%,#06101c 100%);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.65}
+  a{color:#8bc7ff;text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:1180px;margin:auto;padding:24px}
+  .hero{min-height:72vh;display:flex;align-items:center;padding:56px 0 32px;position:relative;overflow:hidden}
+  .hero:before{content:"";position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(82,167,255,.22),transparent 68%);right:-160px;top:-110px}
+  .eyebrow{display:inline-flex;gap:8px;align-items:center;border:1px solid #31567d;border-radius:999px;padding:7px 12px;color:#b8d8f7;background:rgba(14,27,45,.72);font-size:14px}
+  h1{font-size:clamp(38px,6vw,72px);line-height:1.08;margin:18px 0 18px;letter-spacing:-1.8px;max-width:960px}
+  .grad{background:linear-gradient(90deg,#7fc2ff,#55e4d4 45%,#ffd166);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lead{font-size:clamp(18px,2.2vw,25px);color:#c6d5e5;max-width:940px;margin:0 0 24px}
+  .hero-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:30px;max-width:1060px}
+  .hero-step{background:linear-gradient(180deg,#132945,#0c1a2c);border:1px solid #294968;border-radius:18px;padding:18px 12px;text-align:center;position:relative}
+  .hero-step:not(:last-child):after{content:"→";position:absolute;right:-15px;top:38%;font-weight:900;color:#5f86ac;z-index:2;font-size:24px}
+  .ico{font-size:34px;display:block;margin-bottom:6px}
+  .hero-step b{display:block;font-size:16px}.hero-step small{display:block;color:var(--muted);margin-top:4px}
+  .note{border-left:4px solid var(--yellow);padding:12px 16px;background:rgba(255,209,102,.08);border-radius:0 12px 12px 0;color:#e8e0c5;margin-top:20px}
+  section{padding:42px 0}
+  .section-title{font-size:clamp(28px,3.6vw,44px);line-height:1.15;margin:0 0 10px}
+  .section-sub{color:var(--muted);font-size:17px;margin:0 0 24px;max-width:930px}
+  .grid{display:grid;gap:18px}.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+  .card{background:linear-gradient(180deg,rgba(18,35,58,.96),rgba(10,25,42,.96));border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:0 14px 40px rgba(0,0,0,.18)}
+  .card h3{margin:0 0 8px;font-size:22px}.card p{margin:0;color:#bfd0e1}.card .big{font-size:34px;font-weight:900;color:#fff}
+  .kicker{font-size:13px;text-transform:uppercase;letter-spacing:1px;color:#7fa8ca;margin-bottom:8px}
+  .tag{display:inline-block;border:1px solid #355a7d;padding:4px 8px;border-radius:8px;color:#bcd7ef;font-size:12px;margin:2px 4px 2px 0;background:#0a1b2e}
+  .superknife{border-color:#6c5b2f;background:linear-gradient(135deg,rgba(255,209,102,.13),rgba(18,35,58,.95))}
+  .superknife .knife{font-size:68px;filter:drop-shadow(0 8px 20px rgba(255,209,102,.15))}
+  .bridge{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:16px}.bridge span{padding:8px 12px;border-radius:999px;background:#0b1b2c;border:1px solid #2b4662}.bridge i{font-style:normal;color:#6f92b3}
+  .plain{font-size:19px;color:#d7e6f5}.plain strong{color:#fff}
+  .diagram{background:#081623;border:1px solid #27415f;border-radius:22px;padding:20px;overflow:hidden}
+  .chip-svg{width:100%;height:auto;display:block}
+  .legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}.legend span{display:inline-flex;align-items:center;gap:7px;font-size:13px;color:#bed0e1}.dot{width:10px;height:10px;border-radius:50%}
+  .compare{display:grid;grid-template-columns:1fr 1fr;gap:18px}.compare .card{position:relative;overflow:hidden}.compare .card:after{content:"";position:absolute;width:120px;height:120px;border-radius:50%;right:-45px;top:-45px;background:rgba(82,167,255,.08)}
+  .flow{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;align-items:stretch;margin-top:18px}
+  .flow .f{min-height:120px;border:1px solid #294866;background:#0c1e32;border-radius:16px;padding:13px 8px;text-align:center;display:flex;flex-direction:column;justify-content:center;position:relative}
+  .flow .f:not(:last-child):after{content:"›";position:absolute;right:-10px;top:38%;font-size:28px;color:#6487a8;z-index:2}.flow .f.hit{border-color:#36a9a0;background:linear-gradient(180deg,#103a43,#0d2634)}
+  .flow .f b{font-size:14px}.flow .f small{color:#9bb3c9;font-size:12px}.flow .f span{font-size:26px;margin-bottom:4px}
+  .stack{height:52px;display:flex;border-radius:14px;overflow:hidden;border:1px solid #2d4a67;margin:12px 0 8px}
+  .stack>div{display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;color:white;white-space:nowrap;overflow:hidden;min-width:0}
+  .stack .fit-label{font-size:12px;letter-spacing:-.4px}
+  .stack .narrow-label{font-size:10px;letter-spacing:-.55px}
+  .stack-key{display:flex;flex-wrap:wrap;gap:7px 12px;margin:7px 0 4px;color:#d4e1ee;font-size:12px;font-weight:700}
+  .stack-key span{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+  .stack-key i{display:inline-block;width:9px;height:9px;border-radius:3px;flex:0 0 auto}
+  .s-auto{background:#3b76b7}.s-cons{background:#79a745}.s-ind{background:#b24d48}.s-ai{background:#2eafc2}.s-other{background:#7655a5}.s-elec{background:#4e86c4}.s-stat{background:#bd504b}
+  .mini{font-size:12px;color:#9db0c4}
+  .nums{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.num{border:1px solid #2b4763;border-radius:18px;padding:18px;background:#0b1d31}.num .v{font-size:30px;font-weight:900}.num .d{color:#a8bfd5;font-size:13px}.up{color:#79e397}
+  .trend{display:flex;align-items:flex-end;gap:12px;height:215px;padding-top:15px;border-bottom:1px solid #34516f;margin-top:14px}.barcol{flex:1;text-align:center}.bar{width:100%;max-width:70px;margin:auto;background:linear-gradient(180deg,#55e3d3,#3d88cf);border-radius:10px 10px 2px 2px;min-height:18px;display:flex;align-items:flex-start;justify-content:center;padding-top:7px;font-weight:900;color:#06101c}.barcol small{display:block;color:#9db3c8;margin-top:6px}
+  .ladder{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.level{border-radius:20px;padding:22px;border:1px solid #2b4967;background:#0c1c2e}.level:nth-child(1){border-top:4px solid #65aaf2}.level:nth-child(2){border-top:4px solid #50decf}.level:nth-child(3){border-top:4px solid #ffd166}.level .n{font-size:13px;color:#8cacc8}.level h3{font-size:24px;margin:6px 0 7px}.level .emoji{font-size:42px}
+  .watch{display:grid;grid-template-columns:1fr 1fr;gap:12px}.watch div{border:1px solid #2a4660;background:#0b1b2d;border-radius:16px;padding:14px 16px}.watch b{display:block;margin-bottom:3px}.bull b{color:#85e39a}.bear b{color:#ff8d8d}
+  .source{font-size:13px;color:#8fa6bc}.source li{margin:6px 0}.source a{word-break:break-all}
+  .disclaimer{font-size:13px;color:#8ca1b6;border-top:1px solid #213a54;padding-top:14px;margin-top:26px}
+  .pill{display:inline-flex;padding:5px 10px;border-radius:999px;background:#0d2b3c;border:1px solid #24556a;color:#8fe2d6;font-size:12px;font-weight:700}
+  .accent{color:var(--yellow)}
+  .takeaway{font-size:clamp(24px,3vw,38px);line-height:1.3;margin:0}.takeaway em{font-style:normal;color:#65e0d1}
+  footer{padding:38px 0 55px;color:#7890a7;text-align:center;font-size:12px}
+  @media(max-width:850px){.hero-grid,.g4,.g3,.nums,.ladder{grid-template-columns:1fr 1fr}.g2,.compare,.watch{grid-template-columns:1fr}.flow{grid-template-columns:1fr 1fr}.hero-step:not(:last-child):after,.flow .f:not(:last-child):after{display:none}.hero{min-height:auto;padding-top:36px}}
+  @media(max-width:540px){.wrap{padding:17px}.hero-grid,.g4,.g3,.nums,.ladder{grid-template-columns:1fr}.flow{grid-template-columns:1fr 1fr}.stack>div{font-size:10px}.stack .fit-label{font-size:9px}.stack .narrow-label{font-size:8px}.stack-key{font-size:11px;gap:5px 9px}.card{padding:18px}.trend{gap:6px}.bar{max-width:42px;font-size:11px}}
+  @media print{body{background:white;color:#111}.card,.diagram,.level,.num,.flow .f,.watch div{background:white;color:#111;box-shadow:none}.card p,.section-sub,.plain,.mini,.source,.num .d,.flow .f small{color:#444}.wrap{max-width:none}.hero{min-height:auto}.eyebrow,.tag,.pill{color:#111;background:#eee}.grad{color:#111;background:none}.lead{color:#333}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div>
+      <span class="eyebrow">📊 2351 順德工業 SDI｜新手版產品圖解｜資料更新至 2026/09</span>
+      <h1>從一把 <span class="grad">「超級小刀」</span><br>一路做到 AI 伺服器裡的關鍵金屬零件</h1>
+      <p class="lead">看順德，不要先背半導體名詞。先記住一件事：<strong>它最核心的能力一直都是「把金屬精準地沖壓、成形、加工」</strong>，只是產品從文具一路升級到功率半導體與 AI 散熱。</p>
+      <div class="hero-grid">
+        <div class="hero-step"><span class="ico">🔪</span><b>超級小刀</b><small>金屬加工起家</small></div>
+        <div class="hero-step"><span class="ico">🛠️</span><b>精密模具</b><small>沖壓能力升級</small></div>
+        <div class="hero-step"><span class="ico">🧩</span><b>導線架</b><small>進入半導體</small></div>
+        <div class="hero-step"><span class="ico">⚡</span><b>AI 導線架</b><small>高功率電源</small></div>
+        <div class="hero-step"><span class="ico">❄️</span><b>均熱片</b><small>AI 散熱新事業</small></div>
+      </div>
+      <div class="note">💡 <b>最重要的理解：</b>順德不是突然「跨界做 AI」；它是把幾十年的金屬沖壓與精密模具能力，搬到單價與技術門檻更高的產品。</div>
+    </div>
+  </header>
+
+  <section>
+    <h2 class="section-title">01｜你可能早就用過順德：SDI「手牌超級小刀」</h2>
+    <p class="section-sub">順德官方品牌故事把「超級小刀」列為最具代表性的經典產品。1971 年推出一體成形鉛筆刀；而真正影響今天半導體事業的，是文具時代累積下來的金屬沖壓與模具能力。</p>
+    <div class="grid g2">
+      <div class="card superknife">
+        <div class="knife">🔪</div>
+        <div class="kicker">SDI STATIONERY</div>
+        <h3>超級小刀不是旁枝，是「技術起點」</h3>
+        <p class="plain">做小刀、長尾夾、美工刀，需要把金屬<strong>切、壓、折、成形</strong>，而且要大量生產時每一片都一樣。</p>
+        <div class="bridge"><span>金屬材料</span><i>→</i><span>模具</span><i>→</i><span>連續沖壓</span><i>→</i><span>大量精密製造</span></div>
+      </div>
+      <div class="card">
+        <div class="kicker">1983 → SEMICONDUCTOR</div>
+        <h3>為什麼能從文具跨到半導體？</h3>
+        <p class="plain">半導體的「導線架」同樣需要<strong>超薄金屬＋超高精度沖壓</strong>。所以順德真正轉移的不是品牌，而是「製造技術」。</p>
+        <p style="margin-top:14px"><span class="tag">模具設計</span><span class="tag">精密沖壓</span><span class="tag">金屬材料</span><span class="tag">表面處理</span><span class="tag">量產良率</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">02｜導線架到底是什麼？把它想成「晶片的骨架＋道路」</h2>
+    <p class="section-sub">裸晶片本身很脆，也不能直接拿來接電。導線架（Lead Frame）是一塊精密金屬結構，負責固定晶片、把電流／訊號接到外界，也能協助把熱帶走。</p>
+    <div class="diagram">
+      <svg class="chip-svg" viewBox="0 0 1060 420" role="img" aria-label="導線架與均熱片位置示意圖">
+        <defs>
+          <linearGradient id="gchip" x1="0" x2="1"><stop offset="0" stop-color="#7655a5"/><stop offset="1" stop-color="#b48fff"/></linearGradient>
+          <linearGradient id="gmetal" x1="0" x2="1"><stop offset="0" stop-color="#c9d2dc"/><stop offset=".5" stop-color="#f7fbff"/><stop offset="1" stop-color="#9eabb8"/></linearGradient>
+          <filter id="shadow"><feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#000" flood-opacity=".35"/></filter>
+        </defs>
+        <rect x="165" y="292" width="730" height="55" rx="12" fill="#0f263d" stroke="#4d799f" stroke-width="3"/>
+        <rect x="250" y="260" width="560" height="45" rx="9" fill="url(#gmetal)" filter="url(#shadow)"/>
+        <rect x="430" y="180" width="200" height="90" rx="10" fill="url(#gchip)" filter="url(#shadow)"/>
+        <rect x="365" y="105" width="330" height="64" rx="13" fill="url(#gmetal)" stroke="#e2edf7" stroke-width="2" filter="url(#shadow)"/>
+        <path d="M260,283 L140,245 M800,283 L920,245" stroke="#ffd166" stroke-width="13" stroke-linecap="round"/>
+        <path d="M300,283 L155,310 M760,283 L905,310" stroke="#ffd166" stroke-width="13" stroke-linecap="round"/>
+        <text x="530" y="145" text-anchor="middle" fill="#07111f" font-weight="900" font-size="25">均熱片 Heat Spreader</text>
+        <text x="530" y="235" text-anchor="middle" fill="#fff" font-weight="900" font-size="26">GPU / ASIC / 功率晶片</text>
+        <text x="530" y="290" text-anchor="middle" fill="#07111f" font-weight="900" font-size="21">導線架 Lead Frame</text>
+        <text x="530" y="327" text-anchor="middle" fill="#b9cee1" font-size="18">封裝基底 / 外部結構（示意）</text>
+        <line x1="325" y1="235" x2="215" y2="150" stroke="#52a7ff" stroke-width="3"/>
+        <text x="55" y="125" fill="#83c3ff" font-size="21" font-weight="800">導線架做什麼？</text>
+        <text x="55" y="155" fill="#c0d3e4" font-size="17">① 固定晶片</text><text x="55" y="182" fill="#c0d3e4" font-size="17">② 傳導電流 / 訊號</text><text x="55" y="209" fill="#c0d3e4" font-size="17">③ 幫助散熱</text>
+        <line x1="700" y1="135" x2="850" y2="90" stroke="#45e0d0" stroke-width="3"/>
+        <text x="820" y="52" fill="#6ce7d8" font-size="21" font-weight="800">均熱片做什麼？</text>
+        <text x="820" y="82" fill="#c0d3e4" font-size="17">把「熱點」攤大</text><text x="820" y="109" fill="#c0d3e4" font-size="17">再交給散熱器 / 液冷</text>
+      </svg>
+      <div class="legend"><span><i class="dot" style="background:#ffd166"></i>黃色：導線架金屬接腳</span><span><i class="dot" style="background:#a27be8"></i>紫色：晶片</span><span><i class="dot" style="background:#dfe8ef"></i>銀色：均熱片</span></div>
+    </div>
+    <div class="compare" style="margin-top:18px">
+      <div class="card">
+        <span class="pill">🧩 Lead Frame</span>
+        <h3 style="margin-top:10px">導線架＝晶片的「骨架＋電線」</h3>
+        <p>在功率半導體裡尤其重要，因為電流大、熱也高。AI 伺服器的 PSU、Power Stage、BBU、800V HVDC，都需要大量高功率電源零件。</p>
+      </div>
+      <div class="card">
+        <span class="pill">❄️ Heat Spreader</span>
+        <h3 style="margin-top:10px">均熱片＝晶片上方的「金屬鍋蓋」</h3>
+        <p>它不一定是最終散熱器，而是先把 GPU / ASIC 集中的高熱量<strong>快速攤開</strong>，再交給冷板、散熱鰭片或液冷系統帶走。</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">03｜在一台 AI 伺服器裡，順德其實可以吃到兩段</h2>
+    <p class="section-sub">第一段是「供電」：AI 晶片越強，越需要高瓦數、高效率供電；第二段是「散熱」：功耗越高，熱也越難處理。</p>
+    <div class="flow">
+      <div class="f"><span>🏭</span><b>電網</b><small>AC 電力</small></div>
+      <div class="f hit"><span>⚡</span><b>PSU 電源供應</b><small>順德 AI 導線架</small></div>
+      <div class="f hit"><span>🔋</span><b>Power Stage / BBU</b><small>順德 AI 導線架</small></div>
+      <div class="f"><span>🧠</span><b>GPU / ASIC</b><small>AI 算力核心</small></div>
+      <div class="f hit"><span>❄️</span><b>Heat Spreader</b><small>順德均熱片</small></div>
+      <div class="f"><span>💧</span><b>冷板 / 液冷</b><small>把熱帶走</small></div>
+      <div class="f"><span>🌬️</span><b>機櫃散熱</b><small>排出資料中心</small></div>
+    </div>
+    <div class="note">⚠️ <b>別把順德當成「液冷廠」。</b>它不是奇鋐／雙鴻那種整套散熱模組角色；它切的是更靠近晶片封裝與電源半導體的<strong>精密金屬零件</strong>。</div>
+  </section>
+
+  <section>
+    <h2 class="section-title">04｜順德現在到底靠什麼賺錢？</h2>
+    <p class="section-sub">2026 Q2 公司法說：整體營收約 90% 來自電子、10% 來自五金文具。電子產品裡，車用仍是最大基本盤，而 AI 已從很小的比重快速長大。</p>
+    <div class="grid g2">
+      <div class="card">
+        <div class="kicker">2Q26｜公司總營收</div>
+        <div class="stack"><div class="s-elec" style="width:90%">電子 90%</div><div class="s-stat fit-label" style="width:10%">文具 10%</div></div>
+        <div class="stack-key" aria-label="公司總營收圖例"><span><i class="s-elec"></i>電子 90%</span><span><i class="s-stat"></i>五金文具 10%</span></div>
+        <p class="mini">所以今天買 2351，主體早已不是文具公司；但「超級小刀」留下的製造 DNA 還在。</p>
+      </div>
+      <div class="card">
+        <div class="kicker">2Q26｜電子終端應用</div>
+        <div class="stack"><div class="s-auto" style="width:47%">車用 47%</div><div class="s-cons" style="width:30%">3C 30%</div><div class="s-ind fit-label" style="width:15%">工控 15%</div><div class="s-ai narrow-label" style="width:6%">AI 6%</div><div class="s-other" style="width:2%" aria-label="其他 2%"></div></div>
+        <div class="stack-key" aria-label="電子終端應用圖例"><span><i class="s-auto"></i>車用 47%</span><span><i class="s-cons"></i>3C 30%</span><span><i class="s-ind"></i>工控 15%</span><span><i class="s-ai"></i>AI 6%</span><span><i class="s-other"></i>其他 2%</span></div>
+        <p class="mini">AI Lead Frame 2025 約 1% → 1Q26 6% → 2Q26 6%；法說 Q&A 表示 7 月起放量，Q3 有望達電子產品雙位數占比。</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">05｜為什麼 2026 年開始值得重新看順德？</h2>
+    <p class="section-sub">因為不只營收變大，獲利率也一起改善。這通常代表產品組合與價格結構正在發生變化，而不只是「多賣一點舊產品」。</p>
+    <div class="nums">
+      <div class="num"><div class="d">2026 Q2 營收</div><div class="v">35.59 億</div><div class="d up">YoY +37.2%</div></div>
+      <div class="num"><div class="d">2026 Q2 毛利率</div><div class="v">20.7%</div><div class="d up">去年同期 10.5%</div></div>
+      <div class="num"><div class="d">2026 Q2 營業利益</div><div class="v">4.17 億</div><div class="d up">YoY +486.2%</div></div>
+      <div class="num"><div class="d">2026 Q2 EPS</div><div class="v">1.59 元</div><div class="d">Q1 為 1.22 元</div></div>
+    </div>
+    <div class="card" style="margin-top:18px">
+      <div class="kicker">MONTHLY REVENUE MOMENTUM｜年增率</div>
+      <h3>營收年增率從 3 月一路加速到 8 月</h3>
+      <div class="trend">
+        <div class="barcol"><div class="bar" style="height:42px">+13%</div><small>3月</small></div>
+        <div class="barcol"><div class="bar" style="height:70px">+24%</div><small>4月</small></div>
+        <div class="barcol"><div class="bar" style="height:103px">+37%</div><small>5月</small></div>
+        <div class="barcol"><div class="bar" style="height:146px">+52%</div><small>6月</small></div>
+        <div class="barcol"><div class="bar" style="height:153px">+54%</div><small>7月</small></div>
+        <div class="barcol"><div class="bar" style="height:174px">+61%</div><small>8月</small></div>
+      </div>
+      <p class="mini">2026 年 8 月營收 13.26 億元，年增 61.22%；1–8 月累計營收 90.15 億元，年增 32.46%。注意：這是公司整體營收，不能把全部成長都算在 AI 或均熱片。</p>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">06｜投資邏輯：把順德看成「三層成長梯」</h2>
+    <p class="section-sub">這樣比只看「AI 題材」更不容易搞混。真正有價值的是：舊本業提供基本盤，新產品提高成長速度，均熱片提供下一階段選擇權。</p>
+    <div class="ladder">
+      <div class="level">
+        <div class="emoji">🚗</div><div class="n">LEVEL 1｜基本盤</div>
+        <h3>車用＋工控導線架</h3>
+        <p>目前最大營收來源。車用需求復甦、新產品量產，讓順德不必只靠 AI 題材撐營收。</p>
+      </div>
+      <div class="level">
+        <div class="emoji">⚡</div><div class="n">LEVEL 2｜現在式</div>
+        <h3>AI 電源導線架</h3>
+        <p>PSU、Power Stage、BBU、800V HVDC 等應用正在放量。AI 比重若進入雙位數，產品組合有機會持續改善。</p>
+      </div>
+      <div class="level">
+        <div class="emoji">❄️</div><div class="n">LEVEL 3｜選擇權</div>
+        <h3>均熱片 Heat Spreader</h3>
+        <p>2026 Q2 已開始貢獻營收。市場報導指出已切入 IC 設計／封測客戶，2027 才可能真正看出放量程度。</p>
+      </div>
+    </div>
+    <div class="card" style="margin-top:18px">
+      <h3>均熱片目前走到哪裡？</h3>
+      <div class="grid g4" style="margin-top:12px">
+        <div><div class="big">✅</div><b>已過驗證</b><p class="mini">部分客戶已完成認證／合作。</p></div>
+        <div><div class="big">💰</div><b>Q2 起有營收</b><p class="mini">不再只是送樣題材。</p></div>
+        <div><div class="big">🏭</div><b>追加設備</b><p class="mini">法說整理提到沖床、CNC 與擴產規劃。</p></div>
+        <div><div class="big">🚀</div><b>2027 看放量</b><p class="mini">需用實際營收占比驗證。</p></div>
+      </div>
+      <p class="mini" style="margin-top:14px">第三方法說整理／媒體報導指出 Cisco、Amkor 等客戶合作進展；由於公司正式簡報未直接揭露客戶名稱，應視為法說 Q&A／市場資訊，而非簡報中的公司書面揭露。</p>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">07｜真正的投資機會，不是「有 AI」三個字，而是這個路徑</h2>
+    <div class="card">
+      <p class="takeaway">AI 晶片功耗 ↑ → <em>電源需求更高</em> → AI 導線架用量／價值 ↑ → 功耗再提高 → <em>散熱難度上升</em> → 均熱片需求 ↑</p>
+      <div class="note">如果順德能同時吃到「供電」與「散熱」兩邊，它的產品組合就會從傳統車用功率導線架，往 AI 高附加價值金屬零件移動。</div>
+    </div>
+    <div class="grid g3" style="margin-top:18px">
+      <div class="card"><div class="ico">📈</div><h3>機會 1：AI 占比上升</h3><p>2025 約 1%，2026 H1 約 6%，若 Q3 進入雙位數，代表 AI 已從「題材」開始變成財報中的實質業務。</p></div>
+      <div class="card"><div class="ico">💎</div><h3>機會 2：毛利率結構改善</h3><p>高規格、高精度產品占比提高時，獲利成長可能快過營收。Q2 的毛利率與營益率已先看到明顯改善。</p></div>
+      <div class="card"><div class="ico">🌱</div><h3>機會 3：均熱片還很早期</h3><p>目前基期低，因此只要客戶、機種、出貨量持續增加，對 2027 之後的增量可能更有彈性。</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">08｜但要小心：哪些事情會讓投資故事失效？</h2>
+    <div class="watch">
+      <div class="bull"><b>🟢 越來越強的訊號</b>AI 導線架占比持續上升、Q3/Q4 維持雙位數；均熱片出貨客戶增加；毛利率守在高檔；月營收維持高年增。</div>
+      <div class="bear"><b>🔴 需要警覺的訊號</b>AI 占比停止成長；均熱片長期只停留在小量；擴產但稼動率不佳；車用景氣再轉弱；毛利率明顯掉回舊區間。</div>
+      <div class="bull"><b>🟢 最值得追的數字</b>電子事業 AI Lead Frame 占比、均熱片營收占比／出貨量、毛利率、營益率、每月營收 YoY。</div>
+      <div class="bear"><b>🔴 最大的認知陷阱</b>把「公司整體營收大增」全部歸因於均熱片。均熱片 Q2 才開始貢獻，短期仍是新事業，不能高估目前的獲利占比。</div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">一句話總結</h2>
+    <div class="card" style="border-color:#3d718f;background:linear-gradient(135deg,#0c2339,#103047)">
+      <p class="takeaway">順德的故事不是「文具公司變 AI 公司」，而是：<br><span class="accent">用同一套精密金屬加工能力，從 8 元的超級小刀，一路做到 AI 伺服器裡更高價值的導線架與均熱片。</span></p>
+      <p style="margin-top:16px;color:#bbcede">投資上，<b>車用／工控是底、AI 導線架是現在的成長引擎、均熱片是 2027 之後的選擇權。</b></p>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title" style="font-size:27px">資料來源與閱讀註記</h2>
+    <ol class="source">
+      <li>順德工業 2026/08/25 法說簡報：產品組合、AI Lead Frame、均熱片產品類型、2Q26 財務數據。<br><a href="https://www.sdi.com.tw/upload/event/2608201751080000001.pdf" target="_blank">https://www.sdi.com.tw/upload/event/2608201751080000001.pdf</a></li>
+      <li>順德工業官方「品牌故事」：1953 手牌鉛筆刀、1971 超級小刀、1983 跨足半導體與連續沖壓模技術脈絡。<br><a href="https://stationery.sdi.com.tw/about/about/" target="_blank">https://stationery.sdi.com.tw/about/about/</a></li>
+      <li>順德官方財務資訊：2026 年 1–8 月合併營收。<br><a href="https://www.sdi.com.tw/inverstors_finance.php" target="_blank">https://www.sdi.com.tw/inverstors_finance.php</a></li>
+      <li>2026/08/25 法說 Q&A 第三方整理：AI 導線架 Q3 雙位數目標、均熱片 Q2 起營收、擴產與客戶進度。<br><a href="https://www.cmoney.tw/forum/article/183087053" target="_blank">https://www.cmoney.tw/forum/article/183087053</a></li>
+      <li>MoneyDJ：均熱片應用於 HPC／CPO、2026 小量貢獻與 2027 放量觀察。<br><a href="https://www.moneydj.com/kmdj/news/newsviewer.aspx?a=2bcfef4a-e1ef-47d0-af69-6e8777cfbfb0" target="_blank">MoneyDJ 2026/06/25 報導</a></li>
+    </ol>
+    <div class="disclaimer">本頁為公開資訊的學習型整理，不構成買賣建議。產品示意圖為方便初學者理解而簡化，實際半導體封裝結構會依元件與封裝形式不同。</div>
+  </section>
+
+  <footer>2351 順德工業｜產品結構與 AI 投資機會圖解｜2026/09</footer>
+</div>
+</body>
+</html>
