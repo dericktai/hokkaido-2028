@@ -53,7 +53,7 @@
   .credit{position:absolute;right:12px;top:10px;z-index:4;font-size:9px;color:rgba(255,255,255,.68);text-shadow:0 1px 3px #000}
   .footer{position:absolute;z-index:9;left:5.5vw;right:5.5vw;bottom:2.6vh;display:flex;align-items:center;gap:14px}
   .unit{width:170px;font-size:11px;letter-spacing:.12em;color:#d8dddd;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .bar{height:4px;flex:1;background:rgba(255,255,255,.16);border-radius:99px;overflow:hidden}.fill{height:100%;background:linear-gradient(90deg,#d8a555,#f0d18f);width:11.11%;transition:.4s}
+  .bar{height:4px;flex:1;background:rgba(255,255,255,.16);border-radius:99px;overflow:hidden}.fill{height:100%;background:linear-gradient(90deg,#d8a555,#f0d18f);width:10%;transition:.4s}
   .count{width:50px;text-align:right;font-size:12px;color:#e6e9e9}
   .nav{position:absolute;z-index:10;right:5.5vw;top:4vh;display:flex;gap:8px}
   .nav button{width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.23);background:rgba(11,17,20,.5);color:white;font-size:20px;cursor:pointer;backdrop-filter:blur(8px)}
@@ -152,6 +152,28 @@
     </div>
   </section>
 
+
+  <section class="page" data-unit="10/21｜大雪高原溫泉・沼めぐり">
+    <div class="photo" style="background-image:url('https://en.higuma-center.com/_files/ugd/0f82d6_6496c6e56ba94b8a80c3387974c49a66~mv2.jpg')"></div>
+    <div class="shade"></div><div class="shade-bottom"></div>
+    <div class="credit">Photo: Daisetsu Kogen Onsen Brown Bear Information Center</div>
+    <div class="inner">
+      <div class="kicker">NATURE PLAN · 10/21</div>
+      <h1>大雪高原溫泉・沼めぐり<br>走進棕熊棲地的高山濕地</h1>
+      <p class="lede">這條步道位在大雪山深處，是棕熊高度活動的棲地。入山前必須先到 <b>Brown Bear Information Center</b> 接受講習，再依當日棕熊活動與步道狀況進入。若當天可開放，我們四人以較短的 <b>緑沼往返</b> 為主，保留體力與天候彈性。</p>
+      <div class="chips"><span class="chip">4人同行</span><span class="chip">講習登記｜07:00–13:00</span><span class="chip">步道開放｜07:00–15:00</span><span class="chip">棕熊棲地・依現場指示</span></div>
+      <div class="hero-bottom">
+        <div class="stat"><b>🚗 前往</b><span>旭川出發約 2 小時</span></div>
+        <div class="stat"><b>🥾 建議路線</b><span>緑沼往返約 2 小時</span></div>
+        <div class="stat"><b>⚠️ 關鍵提醒</b><span>10/21 必須事前確認是否開放</span></div>
+        <div class="stat"><b>Plan B</b><span>若關閉，改層雲峽＋黑岳</span></div>
+      </div>
+      <div class="join" style="max-width:980px;margin-top:16px">
+        <b>重要：</b>官方目前公布的 2026 使用期為 <b>6/10 至 10 月上旬</b>，且實際開放會依棕熊目擊與步道狀況調整。因此 <b>10/21 已超過目前預定使用期</b>，這一頁只能先列為「候選自然行程」。出發前一週與前 1–2 天都要再次查詢官方「沼・熊情報／Course situation」；若沒有明確開放資訊，就直接執行 Plan B。
+      </div>
+    </div>
+  </section>
+
   <section class="page" data-unit="D3–D4｜大雪山→十勝">
     <div class="inner" style="background:#101719">
       <div class="kicker">DAILY PLAN · 03–04</div><h2>穿越大雪山｜層雲峽到三國峠</h2>
@@ -222,7 +244,7 @@
       </div>
     </div>
   </section>
-  <div class="footer"><div class="unit" id="unit">旅行摘要</div><div class="bar"><div class="fill" id="fill"></div></div><div class="count" id="count">1 / 9</div></div>
+  <div class="footer"><div class="unit" id="unit">旅行摘要</div><div class="bar"><div class="fill" id="fill"></div></div><div class="count" id="count">1 / 10</div></div>
 </div>
 <script>
   const pages=[...document.querySelectorAll('.page')], fill=document.getElementById('fill'), count=document.getElementById('count'), unit=document.getElementById('unit');
