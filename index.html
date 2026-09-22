@@ -53,7 +53,7 @@
   .credit{position:absolute;right:12px;top:10px;z-index:4;font-size:9px;color:rgba(255,255,255,.68);text-shadow:0 1px 3px #000}
   .footer{position:absolute;z-index:9;left:5.5vw;right:5.5vw;bottom:2.6vh;display:flex;align-items:center;gap:14px}
   .unit{width:170px;font-size:11px;letter-spacing:.12em;color:#d8dddd;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .bar{height:4px;flex:1;background:rgba(255,255,255,.16);border-radius:99px;overflow:hidden}.fill{height:100%;background:linear-gradient(90deg,#d8a555,#f0d18f);width:10%;transition:.4s}
+  .bar{height:4px;flex:1;background:rgba(255,255,255,.16);border-radius:99px;overflow:hidden}.fill{height:100%;background:linear-gradient(90deg,#d8a555,#f0d18f);width:9.09%;transition:.4s}
   .count{width:50px;text-align:right;font-size:12px;color:#e6e9e9}
   .nav{position:absolute;z-index:10;right:5.5vw;top:4vh;display:flex;gap:8px}
   .nav button{width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.23);background:rgba(11,17,20,.5);color:white;font-size:20px;cursor:pointer;backdrop-filter:blur(8px)}
@@ -174,6 +174,28 @@
     </div>
   </section>
 
+
+  <section class="page" data-unit="10/21｜黑岳纜車・層雲峽">
+    <div class="photo" style="background-image:url('https://www.rinyu.co.jp/kurodake/img/photo/gallery/20241011_01.jpg')"></div>
+    <div class="shade"></div><div class="shade-bottom"></div>
+    <div class="credit">Photo: 大雪山層雲峡・黒岳ロープウェイ</div>
+    <div class="inner">
+      <div class="kicker">NATURE PLAN · 10/21</div>
+      <h1>黑岳纜車 × 層雲峽<br>從峽谷一路升到大雪山五合目</h1>
+      <p class="lede">黑岳纜車從層雲峽溫泉街一路爬升到黑岳五合目，單程約 <b>7 分鐘</b>。途中視野會從溫泉街、石狩川峽谷與針闊葉林逐步打開；10 月下旬山上往往已帶有初冬氣息，是把「峽谷秋色」與「高山季節轉換」一次看完的方式。</p>
+      <div class="chips"><span class="chip">10/21 營業｜08:00–16:00</span><span class="chip">每 20 分鐘一班</span><span class="chip">單程約 7 分鐘</span><span class="chip">成人來回｜¥3,000</span></div>
+      <div class="hero-bottom">
+        <div class="stat"><b>🚡 纜車</b><span>層雲峽 → 黑岳五合目</span></div>
+        <div class="stat"><b>🏔️ 五合目</b><span>Nature Terrace 看峽谷全景</span></div>
+        <div class="stat"><b>🍂 10 月下旬</b><span>山上可能已有霜雪</span></div>
+        <div class="stat"><b>⏱ 建議停留</b><span>約 1.5–2 小時</span></div>
+      </div>
+      <div class="join" style="max-width:980px;margin-top:16px">
+        <b>行程安排：</b>若大雪高原溫泉沼めぐり 10/21 未開放，這裡就直接成為當天主行程；若前者臨時開放，則把黑岳纜車放在下午作為較輕鬆的第二段自然景觀。10/16–11/8 期間官方纜車營業時間為 08:00–16:00，上行末班通常在營業結束前 40 分鐘；當天仍需確認強風停駛資訊。
+      </div>
+    </div>
+  </section>
+
   <section class="page" data-unit="D3–D4｜大雪山→十勝">
     <div class="inner" style="background:#101719">
       <div class="kicker">DAILY PLAN · 03–04</div><h2>穿越大雪山｜層雲峽到三國峠</h2>
@@ -244,7 +266,7 @@
       </div>
     </div>
   </section>
-  <div class="footer"><div class="unit" id="unit">旅行摘要</div><div class="bar"><div class="fill" id="fill"></div></div><div class="count" id="count">1 / 10</div></div>
+  <div class="footer"><div class="unit" id="unit">旅行摘要</div><div class="bar"><div class="fill" id="fill"></div></div><div class="count" id="count">1 / 11</div></div>
 </div>
 <script>
   const pages=[...document.querySelectorAll('.page')], fill=document.getElementById('fill'), count=document.getElementById('count'), unit=document.getElementById('unit');
